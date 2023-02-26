@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="description" content="Tracker Map" />
+	<meta charset=utf-8 />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+	<title>Tracker Map</title>
+	<style>
+	html, body { 
+		font: 16px sans-serif;
+		color: #fff;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	#cy {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background: #000;
+	}
+	#options {
+		position: absolute;
+		top: 0.5em;
+		right: 0.5em;
+	}
+	#pathfind {
+		position: absolute;
+		top: 0.5em;
+		left: 0.5em;
+	}
+	</style>
+</head>
+<body>
+	<div id="cy"></div>
+	<div id="options">
+		<input type="checkbox" id="abbrev" checked />
+		<label for="abbrev">Abbreviate tracker names</label>
+
+		<input type="checkbox" id="nodeadends" />
+		<label for="nodeadends">Remove dead ends</label>
+
+		<button id="relayout">Refresh layout</button>
+	</div>
+	<div id="pathfind">
+		<div>
+			Source: <select id="source-select"></select>
+			Target: <select id="target-select"></select>
+		</div>
+
+		<input type="checkbox" id="pathonly" />
+		<label for="pathonly">Hide elements not on path</label>
+	</div>
+	<div style="position:absolute;bottom:0.5em;left:0.5em;">
+		Create issues on the <a href="https://github.com/inviteroute/graph">GitHub repository</a> to contribute data.
+	</div>
+
+	<script src="https://unpkg.com/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/cytoscape-popper@2.0.0/cytoscape-popper.js"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script type="text/javascript">
+	const cy = cytoscape({
+		container: document.getElementById("cy"),
+		elements: [
+{data:{id:"ABT",name:"ABTorrents"}},{data:{id:"Aither",name:"Aither"}},{data:{id:"ANT",name:"Anthelion"}},{data:{id:"BdC",name:"BroadCity"}},{data:{id:"BtW",name:"BreatheTheWord"}},{data:{id:"BRKS",name:"BrokenStones"}},{data:{id:"Concertos",name:"Concertos"}},{data:{id:"CGP",name:"CGPeers"}},{data:{id:"GGn",name:"GazelleGames.net"}},{data:{id:"LzTr",name:"LzTr"}},{data:{id:"MAM",name:"MyAnonaMouse"}},{data:{id:"Milkie",name:"Milkie"}},{data:{id:"MTV",name:"MoreThanTV"}},{data:{id:"MyXZ",name:"XtremeZone"}},{data:{id:"NBL",name:"Nebulance"}},{data:{id:"OBS",name:"Obscure"}},{data:{id:"OpenCD",name:"Open.CD"}},{data:{id:"OPS",name:"Orpheus"}},{data:{id:"OTW",name:"OldToons.world"}},{data:{id:"PxC",name:"PixelCove"}},{data:{id:"PxHD",name:"PixelHD"}},{data:{id:"RED",name:"Redacted"}},{data:{id:"SC",name:"Secret Cinema"}},{data:{id:"SM",name:"SugoiMusic"}},{data:{id:"TG",name:"TheGeeks.click"}},{data:{id:"TSP",name:"TheScenePlace"}},{data:{id:"UHDB",name:"UHDBits"}},{data:{source:"MAM",target:"ABT",info:"No additional information."}},{data:{source:"MAM",target:"Aither",info:"No additional information."}},{data:{source:"MAM",target:"ANT",info:"No additional information."}},{data:{source:"MAM",target:"BdC",info:"2 months account age."}},{data:{source:"MAM",target:"BtW",info:"No additional information."}},{data:{source:"MAM",target:"BRKS",info:"1.51 ratio. 1 year account age."}},{data:{source:"MAM",target:"CGP",info:"1TB upload. 6 months account age."}},{data:{source:"MAM",target:"Milkie",info:"No additional information."}},{data:{source:"MAM",target:"MyXZ",info:"1 other tracker profile with 1 year account age."}},{data:{source:"MAM",target:"NBL",info:"No additional information."}},{data:{source:"MAM",target:"OBS",info:"100GB upload. 3 months account age."}},{data:{source:"MAM",target:"OPS",info:"No additional information."}},{data:{source:"MAM",target:"OTW",info:"No additional information."}},{data:{source:"MAM",target:"PxC",info:"No additional information."}},{data:{source:"MAM",target:"PxHD",info:"2 other tracker profiles. 6 months account age."}},{data:{source:"MAM",target:"SC",info:"50GB upload. 6 months account age."}},{data:{source:"MAM",target:"SM",info:"No additional information."}},{data:{source:"MAM",target:"TG",info:"2 or 3 other tracker profiles."}},{data:{source:"MAM",target:"TSP",info:"2.0 ratio. 2 months account age."}},{data:{source:"OPS",target:"ANT",info:"No additional information."}},{data:{source:"OPS",target:"BRKS",info:"1.51 ratio. 1 year account age."}},{data:{source:"OPS",target:"Concertos",info:"No additional information."}},{data:{source:"OPS",target:"GGn",info:"3 months account age."}},{data:{source:"OPS",target:"LzTr",info:"6 months account age."}},{data:{source:"OPS",target:"MTV",info:"1.5 ratio. 6 months account age."}},{data:{source:"OPS",target:"NBL",info:"No additional information."}},{data:{source:"OPS",target:"OpenCD",info:"No additional information."}},{data:{source:"OPS",target:"RED",info:"3 months account age."}},{data:{source:"OPS",target:"SM",info:"No additional information."}},{data:{source:"OPS",target:"UHDB",info:"No additional information."}}],
+		style: [ {
+			selector: "node",
+			style: {
+				"background-color": "#6a6",
+				"label": "data(id)",
+				"color": "#0f0" } }, {
+			selector: "node[deadend]",
+			style: {
+				"background-color": "#a66",
+				"color": "#f00" } }, {
+			selector: "node[?path]",
+			style: {
+				"background-color": "#6aa",
+				"color": "#0ff" } }, {
+			selector: "edge",
+			style: {
+				"width": 3,
+				"line-color": "#666",
+				"target-arrow-color": "#666",
+				"target-arrow-shape": "triangle",
+				"curve-style": "bezier" } }
+		]
+	});
+
+	// Options: Abbreviate tracker names
+	const abbrev = document.getElementById("abbrev");
+	const updateAbbrev = () => {
+		cy.style()
+			.selector("node")
+			.style({
+				"label": abbrev.checked ? "data(id)" : "data(name)",
+			})
+			.update();
+	};
+	abbrev.addEventListener("change", updateAbbrev);
+	updateAbbrev();
+
+	// Options: Remove dead ends
+	cy.batch(() => {
+		cy.nodes().leaves().forEach(n => n.data("deadend", true));
+	});
+
+	const nodeadends = document.getElementById("nodeadends");
+	const updateDeadends = () => {
+		cy.style()
+			.selector("node[deadend][!path]")
+			.style({
+				"display": nodeadends.checked ? "none" : "element",
+			})
+			.update();
+	};
+
+	updateDeadends();
+	nodeadends.addEventListener("change", updateDeadends);
+
+	// Layout
+	const layout = {
+		name: "cose",
+		animate: false,
+		nodeDimensionsIncludeLabels: true,
+	};
+
+	document.getElementById("relayout").addEventListener("click", () => {
+		cy.layout(layout).run();
+	});
+	cy.layout(layout).run();
+
+	// Additional route info
+	let shownTippy;
+
+	function makeTippy(node, content) {
+		removeTippy();
+
+		let ref = node.popperRef();
+		let dummy = document.createElement("div");
+
+		shownTippy = tippy(dummy, {
+			getReferenceClientRect: ref.getBoundingClientRect,
+			appendTo: document.body,
+			trigger: "manual",
+
+			arrow: true,
+			placement: "bottom",
+			hideOnClick: false,
+			duration: [250, 0],
+			sticky: "reference",
+			theme: "light",
+			interactive: true,
+
+			content: content,
+
+			onHidden: function(tip) {
+				if (tip != null) {
+					tip.destroy();
+				}
+			}
+		});
+
+		shownTippy.show();
+
+		return shownTippy;
+	}
+
+	function removeTippy() {
+		if (shownTippy) {
+			shownTippy.hide();
+		}
+	}
+
+	cy.on("tap", (evt) => {
+		let edge = evt.target;
+		if (edge.isEdge && edge.isEdge()) {
+			const data = edge.data();
+			makeTippy(edge, data.source + " → " + data.target + ": " + data.info);
+		} else {
+			removeTippy();
+		}
+	});
+
+	// Pathfinding
+	const sourceSelect = document.getElementById("source-select");
+	const targetSelect = document.getElementById("target-select");
+
+	const pathfind = () => {
+		let res = cy.elements().aStar({
+			root: cy.$id(sourceSelect.value),
+			goal: cy.$id(targetSelect.value),
+			directed: true
+		});
+
+		if (!res.found) {
+			shownTippy = tippy("#pathfind", {
+				trigger: "manual",
+				arrow: true,
+				placement: "bottom",
+				hideOnClick: false,
+				duration: [250, 0],
+				sticky: "reference",
+				theme: "light",
+				interactive: true,
+
+				content: "No path found.",
+
+				onHidden: function(tip) {
+					if (tip != null) {
+						tip.destroy();
+					}
+				}
+			})[0];
+			shownTippy.show();
+			return;
+		}
+
+		cy.batch(() => {
+			cy.elements().forEach(n => n.data("path", false));
+			res.path.forEach(n => n.data("path", true));
+		});
+	};
+
+	const setupPathfindSelect = (select) => {
+		cy.nodes().forEach(node => {
+			select.add(new Option(node.id() + ": " + node.data().name, node.id()));
+		});
+
+		select.addEventListener("change", pathfind);
+	};
+
+	setupPathfindSelect(sourceSelect);
+	setupPathfindSelect(targetSelect);
+	sourceSelect.value = "MAM";
+	targetSelect.value = "MAM";
+	pathfind();
+
+	const pathonly = document.getElementById("pathonly");
+	pathonly.addEventListener("change", () => {
+		cy.style()
+			.selector("[!path]")
+			.style({
+				"display": pathonly.checked ? "none" : "element",
+			})
+			.update();
+	});
+	</script>
+</body>
+</html>
