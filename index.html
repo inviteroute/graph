@@ -64,6 +64,7 @@
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script src="https://unpkg.com/cytoscape-popper@2.0.0/cytoscape-popper.js"></script>
 	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script src="https://unpkg.com/cytoscape-euler@1.2.2"></script>
 	<script type="text/javascript">
 	const cy = cytoscape({
 		container: document.getElementById("cy"),
@@ -126,8 +127,10 @@
 
 	// Layout
 	const layout = {
-		name: "cose",
+		name: "euler",
 		animate: false,
+		randomize: true,
+		springLength: (edge) => 15*(4 + edge.target().connectedEdges().length),
 		nodeDimensionsIncludeLabels: true,
 	};
 
