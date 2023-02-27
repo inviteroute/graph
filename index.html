@@ -48,7 +48,7 @@
 	</div>
 	<div id="pathfind">
 		<div>
-			Source: <select id="source-select"></select>
+			Source: <select id="source-select"><option value="any">Any</option></select>
 			Target: <select id="target-select"></select>
 		</div>
 
@@ -364,6 +364,16 @@
 	const targetSelect = document.getElementById("target-select");
 
 	const pathfind = () => {
+		if (sourceSelect.value == "any") {
+			cy.batch(() => {
+				let target = cy.$id(targetSelect.value);
+				cy.elements().forEach(n => n.data("path", false));
+				target.data("path", true);
+				target.predecessors().forEach(n => n.data("path", true));
+			});
+			return;
+		}
+
 		let res = cy.elements().aStar({
 			root: cy.$id(sourceSelect.value),
 			goal: cy.$id(targetSelect.value),
