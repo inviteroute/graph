@@ -268,6 +268,9 @@
 			style: {
 				"background-color": "#a66",
 				"color": "#f00" } }, {
+			selector: ".hide",
+			style: {
+				"display": "none" } }, {
 			selector: "node[?path]",
 			style: {
 				"background-color": "#6aa",
@@ -296,28 +299,24 @@
 	updateAbbrev();
 
 	// Options: Remove dead ends
-	cy.batch(() => {
-		let deadends = cy.nodes().leaves();
-		deadends.forEach(n => n.addClass("deadend"));
-		cy.nodes().edgesTo(deadends).forEach(n => n.addClass("deadend"));
-	});
+	let deadends = cy.nodes().leaves();
+	deadends.addClass("deadend");
+	cy.nodes().edgesTo(deadends).addClass("deadend");
 
 	const pathonly = document.getElementById("pathonly");
 	const nodeadends = document.getElementById("nodeadends");
 	const updateDeadends = () => {
-		cy.style()
-			.selector(".deadend[!path]")
-			.style({
-				"display": nodeadends.checked ? "none" : "element",
-			})
-			.selector("[!path]")
-			.style({
-				"display": pathonly.checked ? "none" : "element",
-			})
-			.update();
+		cy.elements().removeClass("hide");
+
+		if (nodeadends.checked)
+			cy.$(".deadend[!path]").addClass("hide");
+
+		if (pathonly.checked)
+			cy.$("[!path]").addClass("hide");
 	};
 
 	updateDeadends();
+	pathonly.addEventListener("change", updateDeadends);
 	nodeadends.addEventListener("change", updateDeadends);
 
 	// Layout
@@ -452,15 +451,6 @@
 	sourceSelect.value = "RED";
 	targetSelect.value = "RED";
 	pathfind();
-
-	pathonly.addEventListener("change", () => {
-		cy.style()
-			.selector("[!path]")
-			.style({
-				"display": pathonly.checked ? "none" : "element",
-			})
-			.update();
-	});
 	</script>
 </body>
 </html>
