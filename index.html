@@ -435,6 +435,7 @@
 		cy.batch(() => {
 			cy.elements().forEach(n => n.data("path", false));
 			res.path.forEach(n => n.data("path", true));
+			updateDeadends();
 		});
 	};
 
