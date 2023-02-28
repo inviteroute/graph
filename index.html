@@ -57,7 +57,7 @@
 	</div>
 	<div style="position:absolute;bottom:0.5em;left:0.5em;">
 		Click on circles and arrows to get additional information.<br>
-		Create issues on the <a href="https://github.com/inviteroute/graph">GitHub repository</a> to contribute data.
+		Create issues on the <a href="https://github.com/inviteroute/graph" style="color:#f0f">GitHub repository</a> to contribute data.
 	</div>
 
 	<script src="https://unpkg.com/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
@@ -264,7 +264,7 @@
 				"background-color": "#6a6",
 				"label": "data(id)",
 				"color": "#0f0" } }, {
-			selector: "node[deadend]",
+			selector: "node.deadend",
 			style: {
 				"background-color": "#a66",
 				"color": "#f00" } }, {
@@ -297,15 +297,22 @@
 
 	// Options: Remove dead ends
 	cy.batch(() => {
-		cy.nodes().leaves().forEach(n => n.data("deadend", true));
+		let deadends = cy.nodes().leaves();
+		deadends.forEach(n => n.addClass("deadend"));
+		cy.nodes().edgesTo(deadends).forEach(n => n.addClass("deadend"));
 	});
 
+	const pathonly = document.getElementById("pathonly");
 	const nodeadends = document.getElementById("nodeadends");
 	const updateDeadends = () => {
 		cy.style()
-			.selector("node[deadend][!path]")
+			.selector(".deadend[!path]")
 			.style({
 				"display": nodeadends.checked ? "none" : "element",
+			})
+			.selector("[!path]")
+			.style({
+				"display": pathonly.checked ? "none" : "element",
 			})
 			.update();
 	};
@@ -446,7 +453,6 @@
 	targetSelect.value = "RED";
 	pathfind();
 
-	const pathonly = document.getElementById("pathonly");
 	pathonly.addEventListener("change", () => {
 		cy.style()
 			.selector("[!path]")
