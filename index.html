@@ -325,7 +325,7 @@
 		name: "euler",
 		animate: false,
 		randomize: true,
-		springLength: (edge) => 15*(4 + edge.target().connectedEdges().length),
+		springLength: (edge) => 30*(2 + edge.target().connectedEdges().length),
 	};
 
 	document.getElementById("relayout").addEventListener("click", () => {
