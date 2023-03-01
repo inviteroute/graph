@@ -33,10 +33,20 @@
 		top: 0.5em;
 		left: 0.5em;
 	}
+	#pathdesc {
+		position: absolute;
+		bottom: 0.5em;
+		left: 0.5em;
+		max-width: 600px;
+		pointer-events: none;
+		z-index: 99999;
+	}
 	</style>
 </head>
 <body>
-	<div id="cy"></div>
+	<div id="cy">
+		<div id="pathdesc"></div>
+	</div>
 	<div id="options">
 		<input type="checkbox" id="abbrev" checked />
 		<label for="abbrev">Abbreviate tracker names</label>
@@ -54,8 +64,11 @@
 
 		<input type="checkbox" id="pathonly" />
 		<label for="pathonly">Hide elements not on path</label>
+
+		<input type="checkbox" id="showpathdesc" checked />
+		<label for="showpathdesc">Show path description</label>
 	</div>
-	<div style="position:absolute;bottom:0.5em;left:0.5em;">
+	<div style="position:absolute;bottom:0.5em;right:0.5em;text-align:right;">
 		Click on circles and arrows to get additional information.<br>
 		See the <a href="https://github.com/inviteroute/graph" style="color:#f0f">GitHub repository</a> for ways to contribute data.
 	</div>
@@ -124,26 +137,26 @@
 {data:{id:"TT",name:"Torrentech",info:"No additional information."}},
 {data:{id:"SG",name:"SocietyGlitch",info:"No additional information."}},
 {data:{id:"UHDB",name:"UHDBits",info:"No additional information."}},
-{data:{source:"GGn",target:"AB",info:"No additional information.",days:30}},
+{data:{source:"GGn",target:"AB",info:"Elite Gamer user class. 3 months account age.",days:30}},
 {data:{source:"GGn",target:"ANT",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"CGP",info:"No additional information.",days:30}},
+{data:{source:"GGn",target:"CGP",info:"1.0 real ratio. 3 months account age.",days:30}},
 {data:{source:"GGn",target:"CCS",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"DIC",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"Emp",info:"No additional information.",days:30}},
+{data:{source:"GGn",target:"DIC",info:"10 music uploads, or 15 other uploads.",days:30}},
+{data:{source:"GGn",target:"Emp",info:"6 months account age.",days:30}},
 {data:{source:"GGn",target:"EB",info:"No additional information.",days:30}},
 {data:{source:"GGn",target:"FF",info:"No additional information.",days:30}},
 {data:{source:"GGn",target:"MAM",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"MTV",info:"No additional information.",days:30}},
+{data:{source:"GGn",target:"MTV",info:"1.5 ratio. 6 months account age.",days:30}},
 {data:{source:"GGn",target:"NBL",info:"No additional information.",days:30}},
 {data:{source:"GGn",target:"OpenCD",info:"No additional information.",days:30}},
 {data:{source:"GGn",target:"OPS",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"PB",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"PTer",info:"No additional information.",days:30}},
+{data:{source:"GGn",target:"PB",info:"6 months account age.",days:30}},
+{data:{source:"GGn",target:"PTer",info:"6 months account age.",days:30}},
 {data:{source:"GGn",target:"PTN",info:"No additional information.",days:30}},
 {data:{source:"GGn",target:"PxC",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"PxHD",info:"No additional information.",days:30}},
+{data:{source:"GGn",target:"PxHD",info:"6 months account age.",days:30}},
 {data:{source:"GGn",target:"RED",info:"No additional information.",days:30}},
-{data:{source:"GGn",target:"SG",info:"No additional information.",days:30}},
+{data:{source:"GGn",target:"SG",info:"90 days account age. Currently at user limit.",days:30}},
 {data:{source:"GGn",target:"UHDB",info:"No additional information.",days:30}},
 {data:{source:"MAM",target:"ABT",info:"No additional information.",days:28}},
 {data:{source:"MAM",target:"Aither",info:"No additional information.",days:28}},
@@ -430,8 +443,20 @@
 				}
 			})[0];
 			shownTippy.show();
+
+			document.getElementById("pathdesc").innerHTML = "";
 			return;
 		}
+
+		if (res.path.length <= 1)
+			document.getElementById("pathdesc").innerHTML = "";
+		else
+			document.getElementById("pathdesc").innerHTML = res.path.map(x => {
+				return (x.isNode()
+					? x.id() + " (" + x.data("name") + ")"
+					: x.data("source") + " → " + x.data("target"))
+				+ ": " + x.data("info");
+			}).join("<br><br><br>") + "<br><br>Total: " + res.distance + " days.";
 
 		cy.batch(() => {
 			cy.elements().forEach(n => n.data("path", false));
@@ -453,6 +478,12 @@
 	sourceSelect.value = "RED";
 	targetSelect.value = "RED";
 	pathfind();
+
+	// Options: Show path description
+	const showpathdesc = document.getElementById("showpathdesc");
+	showpathdesc.addEventListener("change", () => {
+		document.getElementById("pathdesc").style["display"] = showpathdesc.checked ? "" : "none";
+	});
 	</script>
 </body>
 </html>
