@@ -415,6 +415,7 @@
 
 	const pathfind = () => {
 		if (sourceSelect.value == "any") {
+			document.getElementById("pathdesc").innerHTML = "";
 			cy.batch(() => {
 				let target = cy.$id(targetSelect.value);
 				cy.elements().forEach(n => n.data("path", false));
