@@ -284,6 +284,9 @@
 			selector: ".hide",
 			style: {
 				"display": "none" } }, {
+			selector: "[?path]",
+			style: {
+				"z-index": 4 } }, {
 			selector: "node[?path]",
 			style: {
 				"background-color": "#6aa",
@@ -294,7 +297,12 @@
 				"line-color": "#666",
 				"target-arrow-color": "#666",
 				"target-arrow-shape": "triangle",
-				"curve-style": "bezier" } }
+				"curve-style": "bezier" } }, {
+			selector: "edge[?path]",
+			style: {
+				"width": 4,
+				"line-color": "#6bb",
+				"target-arrow-color": "#6bb" } }
 		]
 	});
 
