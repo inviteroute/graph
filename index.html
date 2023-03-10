@@ -461,11 +461,19 @@
 	nodeadends.addEventListener("change", updateDeadends);
 
 	// Layout
+	const nodesFrom = node => node.connectedEdges().targets()
 	const layout = {
 		name: "euler",
 		animate: false,
 		randomize: true,
-		springLength: (edge) => 30*(2 + edge.target().connectedEdges().length),
+		pull: 0.0003,
+		mass: node => 8,
+		springCoeff: edge => 0.0008/(edge.target().incomers().length),
+		springLength: edge => {
+			const fs = nodesFrom(edge.source());
+			const ft = nodesFrom(edge.target());
+			return 100 + 80 * ft.not(fs).length - 10 * ft.and(fs).length - 5 * edge.target().incomers().length;
+		},
 	};
 
 	document.getElementById("relayout").addEventListener("click", () => {
