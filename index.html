@@ -79,7 +79,7 @@
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script src="https://unpkg.com/cytoscape-popper@2.0.0/cytoscape-popper.js"></script>
 	<script src="https://unpkg.com/tippy.js@6"></script>
-	<script src="https://unpkg.com/cytoscape-euler@1.2.2"></script>
+
 	<script type="text/javascript">
 	const cy = cytoscape({
 		container: document.getElementById("cy"),
@@ -429,7 +429,7 @@
 				"color": "#0ff" } }, {
 			selector: "edge",
 			style: {
-				"width": 3,
+				"width": 1,
 				"line-color": "#666",
 				"target-arrow-color": "#666",
 				"target-arrow-shape": "triangle",
@@ -477,19 +477,138 @@
 	nodeadends.addEventListener("change", updateDeadends);
 
 	// Layout
-	const nodesFrom = node => node.connectedEdges().targets()
+	const nodesFrom = node => node.connectedEdges().targets();
+
+	const inNodes = node => node.incomers().sources();
+	const outNodes = node => node.outgoers().targets();
+
+	function TrackerLayout(options) {
+		this.options = options;
+	}
+
+	TrackerLayout.prototype.avsdf = function(coll) {
+		const md = eles => eles;
+
+		const order = [];
+		const s = [coll.min(e => e.degree()).ele];
+
+		const conn = node => node.incomers().sources().and(coll).union(node.outgoers().targets().and(coll));
+
+		while (s.length > 0) {
+			const v = s.pop();
+			if (order.indexOf(v.id()) === -1) {
+				order.push(v.id());
+
+				const bydeg = conn(v).sort((a,b) => conn(b).length - conn(a).length);
+				for (const v2 of bydeg) {
+					s.push(v2);
+				}
+			}
+		}
+
+		return order;
+	}
+
+	TrackerLayout.prototype.run = function() {
+		const eles = this.options.eles;
+		const nodes = eles.nodes();
+
+		const clusters = {
+			"central": []
+		};
+
+		nodes.forEach(node => {
+			if (outNodes(outNodes(node)).length > 0)
+				clusters["central"].push(node);
+		});
+
+		const cc = cy.collection(clusters["central"]);
+		let done = cc;
+		for (const node of cc) {
+			let out = outNodes(node).not(cc);
+			out = out.filter(n => {
+				return inNodes(n).length === 1;
+			}).union(node);
+
+			if (out.length > 1) {
+				clusters[node.id()] = out;
+				done = done.union(out);
+			}
+		}
+
+		const positions = {};
+		const circle = (coll, c, r, key) => {
+			const order = this.avsdf(coll);
+			const ang = 2 * Math.PI / order.length;
+			let start = 0;
+
+			if (key) {
+				start = Math.atan2(-c.y, -c.x) - order.indexOf(key) * ang;
+
+				const angle = Math.atan2(c.y, c.x);
+				c = {
+					x: c.x + Math.cos(angle) * r,
+					y: c.y + Math.sin(angle) * r
+				}
+			}
+
+			for (let i = 0; i < order.length; ++i) {
+				let a = start + i * ang;
+
+				positions[order[i]] = {
+					x: c.x + r * Math.cos(a),
+					y: c.y + r * Math.sin(a)
+				}
+			};
+		};
+
+		circle(cc, {x: 0, y: 0}, 600);
+
+		for (const key of Object.keys(clusters)) {
+			if (key != "central") {
+				circle(cy.collection(clusters[key]), positions[key], 15 * clusters[key].length, key);
+			}
+		}
+
+		let left = nodes.not(nodes.leaves()).not(cc);
+		while (left.length > 0) {
+			let node = left[0];
+
+			out = outNodes(node).not(cc).filter(n => inNodes(n).length === 1).union(node);
+			circle(out, positions[node.id()], 20 * out.length, node.id());
+
+			left = left.not(node);
+		}
+
+		let avg = coll => {
+			let sum = coll.reduce((acc,n) => {
+				let p = positions[n.id()]
+				return {
+					x: acc.x + p.x,
+					y: acc.y + p.y
+				}
+			}, { x: 0, y: 0 })
+
+			return {
+				x: sum.x / coll.length,
+				y: sum.y / coll.length
+			}
+		}
+
+		for (let leaf of nodes.leaves().filter(leaf => !(leaf.id() in positions))) {
+			positions[leaf.id()] = avg(inNodes(leaf))
+		}
+
+		nodes.layoutPositions(this, this.options, n => positions[n.id()]);
+
+		return this;
+	}
+
+	cytoscape("layout", "trackers", TrackerLayout);
+
 	const layout = {
-		name: "euler",
-		animate: false,
-		randomize: true,
-		pull: 0.0003,
-		mass: node => 8,
-		springCoeff: edge => 0.0008/(edge.target().incomers().length),
-		springLength: edge => {
-			const fs = nodesFrom(edge.source());
-			const ft = nodesFrom(edge.target());
-			return 100 + 80 * ft.not(fs).length - 10 * ft.and(fs).length - 5 * edge.target().incomers().length;
-		},
+		"name": "trackers",
+		fit: true
 	};
 
 	document.getElementById("relayout").addEventListener("click", () => {
