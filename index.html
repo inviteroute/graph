@@ -52,7 +52,7 @@
 		<input type="checkbox" id="abbrev" checked />
 		<label for="abbrev">Abbreviate tracker names</label>
 
-		<input type="checkbox" id="nodeadends" />
+		<input type="checkbox" id="nodeadends" checked />
 		<label for="nodeadends">Remove dead ends</label>
 
 		<button id="relayout">Refresh layout</button>
@@ -84,85 +84,132 @@
 	const cy = cytoscape({
 		container: document.getElementById("cy"),
 		elements: [
+{data:{id:"1PTBA",name:"1PTBA",info:"No additional information."}},
+{data:{id:"2xFree",name:"2xFree",info:"No additional information."}},
+{data:{id:"3Wmg",name:"3Wmg (芒果)",info:"No additional information."}},
+{data:{id:"52PT",name:"52PT",info:"No additional information."}},
 {data:{id:"AB",name:"AnimeBytes",info:"Invite forum unlocks with Power User user class: 25GB upload, 0.7 ratio, 10 torrents uploaded, 2 weeks account age.<br><br>Torrent Master user class: 500GB upload, 0.9 ratio, 100 torrents uploaded, 90 days account age."}},
 {data:{id:"ABT",name:"ABTorrents",info:"No invite forum."}},
 {data:{id:"ACM",name:"AsianCinema",info:"No additional information."}},
 {data:{id:"Aither",name:"Aither",info:"No additional information."}},
 {data:{id:"ANT",name:"Anthelion",info:"No additional information."}},
 {data:{id:"AR",name:"AlphaRatio",info:"Invite forum unlocks with Sphinx user class: 3.2TB upload, 1.44 million seed bonus points, no Hit and Runs, 26 weeks account age.<br><br>Satyr user class: 12TB upload, 2.4 million seed bonus points, no Hit and Runs, 60 weeks account age.<br>Adonis user class: 12TB upload, 2.0 million seed bonus points, no Hit and Runs, 60 weeks account age, 50USD or greater donation."}},
+{data:{id:"Audiences",name:"Audiences",info:"No additional information."}},
+{data:{id:"AZ",name:"AvistaZ",info:"No additional information."}},
 {data:{id:"Azusa",name:"Azusa",info:"No additional information."}},
 {data:{id:"BBT",name:"BakaBT",info:"No additional information."}},
 {data:{id:"BdC",name:"BroadCity",info:"No additional information."}},
+{data:{id:"BeiTai",name:"BeiTai (备胎)",info:"No additional information."}},
 {data:{id:"BHD",name:"BeyondHD",info:"Invite forum unlocks with Pro user class: 1.25TB upload, 0.70 ratio, 30 days seed time, 4 years 11 months total seed time, 60 completed seeds, 500GB special seed size, 6 months account age."}},
+{data:{id:"BHDTV",name:"Bit-HDTV",info:"No additional information."}},
 {data:{id:"BiB",name:"Bibliotik",info:"Invite forum unlocks with Power User user class: either 1GB upload and 100 torrents uploaded, or 10GB upload and 10 torrents uploaded, 1.05 ratio, 2 weeks account age."}},
-{data:{id:"Bit-HDTV",name:"Bit-HDTV",info:"No additional information."}},
 {data:{id:"BLU",name:"Blutopia",info:"Invite forum unlocks with BluExtremist or BluSeeder<br>BluExtremist: 20TB upload, 3 months account age.<br>BluSeeder: 5TB seedsize, 30 days average seedtime, 1 month account age."}},
+{data:{id:"BTSchool",name:"BTSchool (学校)",info:"No additional information."}},
 {data:{id:"BtW",name:"BreatheTheWord",info:"No additional information."}},
-{data:{id:"BRKS",name:"BrokenStones",info:"Invite forum unlocks with Power User user class: 50GB upload, 1.05 ratio, 1 torrent uploaded.<br><br>Elite User user class: 75GB upload, 1.05 ratio, 10 torrents uploaded."}},
+{data:{id:"BYRBT",name:"BYRBT (北京邮电大学PT站)",info:"No additional information."}},
 {data:{id:"CCS",name:"Concertos",info:"No additional information."}},
 {data:{id:"CG",name:"Cinemageddon",info:"Invite forum unlocks with Superfan user class: 200GB upload, 20GB download, 1.5 ratio."}},
 {data:{id:"CGP",name:"CGPeers",info:"No additional information."}},
 {data:{id:"CH",name:"Cryptic-Haven",info:"No additional information."}},
 {data:{id:"CHD",name:"CrazyHD",info:"No additional information."}},
+{data:{id:"CRT",name:"Cathode-Ray.Tube",info:"No additional information."}},
 {data:{id:"D3",name:"D3Si",info:"No additional information."}},
 {data:{id:"DCC",name:"DigitalCore.Club",info:"No additional information."}},
-{data:{id:"DIC",name:"Dolphin Is Coming",info:"No additional information."}},
+{data:{id:"DIC",name:"Dolphin Is Coming",info:"Invite forum unlocks with Power User user class: 25GB upload, 1.05 ratio, 5 torrents uploaded, 2 weeks account age."}},
+{data:{id:"DiscFan",name:"DiscFan (碟粉)",info:"No additional information."}},
+{data:{id:"DragonHD",name:"DragonHD (龙之家)",info:"No additional information."}},
 {data:{id:"DT",name:"Desitorrents",info:"No additional information."}},
 {data:{id:"EB",name:"ExtremeBits",info:"No additional information."}},
 {data:{id:"Emp",name:"Empornium",info:"Invite forum unlocks with Great Perv user class: 100GB upload, 1.05 ratio, 5 torrents uploaded, 8 weeks account age.<br><br>Sextreme Perv: 1TB upload, 1.05 ratio, 50 torrents uploaded, 13 weeks account age."}},
 {data:{id:"FF",name:"FunFile",info:"No additional information."}},
-{data:{id:"FL",name:"Filelist.io",info:"No additional information."}},
+{data:{id:"FL",name:"Filelist.io",info:"Invite forum unlocks with VIP purchase (monetary or bonus points).<br><br>Elite user class: 4TB upload, 5.0 ratio, 4 years account age."}},
+{data:{id:"FSM",name:"FSM (飞天拉面神教)",info:"No additional information."}},
+{data:{id:"Gainbound",name:"Gainbound (丐帮)",info:"No additional information."}},
 {data:{id:"GGn",name:"GazelleGames.net",info:"Invite forum unlocks with Pro Gamer user class. All user classes are gained with achievement points.<br>Additional invite forum unlocks with Legendary Gamer user class."}},
 {data:{id:"GMgard",name:"Gentlemen's Garden",info:"No additional information."}},
-{data:{id:"GPW",name:"Great Poster Wall",info:"No additional information."}},
+{data:{id:"GPW",name:"Great Poster Wall",info:"Invite forum unlocks with Power User user class: 200GB raw download, 1.2 ratio, 1 torrent uploaded, 2 weeks account age.<br><br>Elite user class: 500GB raw download, 1.2 ratio, 25 torrents uploaded, 4 weeks account age."}},
+{data:{id:"HaiDan",name:"HaiDan (海胆之家)",info:"No additional information."}},
+{data:{id:"Hares",name:"Hares Club (白兔)",info:"No additional information."}},
+{data:{id:"HD4FANS",name:"HD4FANS",info:"No additional information."}},
+{data:{id:"HDArea",name:"HDArea (好大)",info:"No additional information."}},
+{data:{id:"HDAtmos",name:"HDAtmos (全景声)",info:"No additional information."}},
 {data:{id:"HDB",name:"HDBits",info:"No additional information."}},
 {data:{id:"HDChina",name:"HDChina",info:"No additional information."}},
-{data:{id:"HDCity",name:"HDCity",info:"No additional information."}},
-{data:{id:"HDT",name:"HD-Torrents",info:"No official recruitment."}},
+{data:{id:"HDCity",name:"HDCity (高清城市)",info:"No additional information."}},
+{data:{id:"HDDolby",name:"HD Dolby (高清杜比)",info:"No additional information."}},
+{data:{id:"HDFans",name:"HDFans (红豆饭)",info:"No additional information."}},
+{data:{id:"HD-Only",name:"HD-Only",info:"No additional information."}},
+{data:{id:"HDPOST",name:"HDPOST (普斯特)",info:"No additional information."}},
+{data:{id:"HDPT",name:"HDPT (明教)",info:"No additional information."}},
 {data:{id:"HDSky",name:"HDSky",info:"No additional information."}},
+{data:{id:"HDT",name:"HD-Torrents",info:"No official recruitment."}},
+{data:{id:"HDtime",name:"HDtime (时间)",info:"No additional information."}},
+{data:{id:"HDU",name:"HDU (好多油)",info:"No additional information."}},
+{data:{id:"HHCLUB",name:"HHCLUB (晚汉)",info:"No additional information."}},
+{data:{id:"HITPT",name:"HITPT (百川)",info:"No additional information."}},
 {data:{id:"Hone",name:"Hawke-one",info:"No additional information."}},
-{data:{id:"HTPT",name:"HTPT",info:"No additional information."}},
+{data:{id:"HTPT",name:"HTPT (海棠) ",info:"No additional information."}},
+{data:{id:"HUDBT",name:"HUDBT (华中科技大学蝴蝶PT)",info:"No additional information."}},
 {data:{id:"iAnon",name:"iAnon",info:"No additional information."}},
+{data:{id:"JoyHD",name:"JoyHD (快乐)",info:"No additional information."}},
 {data:{id:"JPS",name:"JPopsuki",info:"No additional information."}},
 {data:{id:"JPTV.club",name:"JPTV.club",info:"No additional information."}},
 {data:{id:"KamePT",name:"KamePT",info:"No additional information."}},
+{data:{id:"KeepFRDS",name:"KeepFRDS",info:"No additional information."}},
 {data:{id:"LB",name:"LearnBits",info:"No additional information."}},
+{data:{id:"LeagueHD",name:"LeagueHD",info:"No additional information."}},
 {data:{id:"LzTr",name:"LzTr",info:"Invite forum unlocks with Power User user class: 25GB upload, 1.05 ratio, 5 torrents uploaded, 2 weeks account age."}},
 {data:{id:"MAM",name:"MyAnonaMouse",info:"Invite forum unlocks with Power User user class: 25GB upload, 2.0 ratio, 4 weeks account age."}},
 {data:{id:"MDU",name:"MONIKADESIGN",info:"No additional information."}},
 {data:{id:"Milkie",name:"Milkie",info:"No additional information."}},
+{data:{id:"M-T",name:"M-Team",info:"Invite forum unlocks with Elite User user class: 400GB download, 3.0 ratio, 8 weeks account age."}},
 {data:{id:"MTV",name:"MoreThanTV",info:"Invite forum unlocks with Camera Operator user class: 500GB upload, 8 weeks account age.<br><br>Boom Operator user class: 1000GB upload, 10 checked uploads, 5 forum posts."}},
 {data:{id:"MyXZ",name:"XtremeZone",info:"No additional information."}},
 {data:{id:"NBL",name:"Nebulance",info:"Invite forum unlocks with Ensign user class: 100GB upload, 100 snatches, 100000 Cubits, 4 weeks account age.<br><br>Flattop user class: 250GB upload, 250 snatches, 500000 Cubits, 8 weeks account age."}},
+{data:{id:"NPUPT",name:"NPUPT (蒲公英)",info:"No additional information."}},
+{data:{id:"NYPT",name:"NYPT (西安交通大学南洋PT)",info:"No additional information."}},
+{data:{id:"OB",name:"OurBits",info:"Invite forum unlocks with Elite User user class: 350GB download, 2.5 ratio, 10 weeks account age."}},
 {data:{id:"OBS",name:"Obscure",info:"No additional information."}},
-{data:{id:"OpenCD",name:"Open.CD",info:"No additional information."}},
+{data:{id:"OpenCD",name:"Open.CD",info:"Invite forum unlocks with: 60GB download or 20 torrents uploaded, 2.0 ratio, 10 weeks account age."}},
 {data:{id:"OPS",name:"Orpheus",info:"Invite forum unlocks with Elite user class: 100GB upload, 1.05 ratio, 50 torrents uploaded, 4 weeks account age."}},
 {data:{id:"OTW",name:"OldToons.world",info:"No additional information."}},
 {data:{id:"PB",name:"Pornbay",info:"No additional information."}},
-{data:{id:"PTer",name:"PTerClub",info:"No additional information."}},
+{data:{id:"Portugas",name:"Portugas",info:"No additional information."}},
+{data:{id:"PTer",name:"PTerClub",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 10000 seeding points, 1 torrent uploaded, 5 weeks account age."}},
 {data:{id:"PTF",name:"PTFiles",info:"No additional information."}},
+{data:{id:"PTHome",name:"PTHome (铂金家)",info:"No additional information."}},
+{data:{id:"PTMSG",name:"PTMSG",info:"No additional information."}},
 {data:{id:"PTN",name:"PirateTheNet",info:"No additional information."}},
 {data:{id:"PTP",name:"PassThePopcorn",info:"No requirement data yet."}},
+{data:{id:"PTSbao",name:"PTSbao (烧包)",info:"No additional information."}},
 {data:{id:"PxC",name:"PixelCove",info:"No additional information."}},
 {data:{id:"PxHD",name:"PixelHD",info:"No additional information."}},
 {data:{id:"RED",name:"Redacted",info:"Invite forum unlocks with Power User user class: 25GB upload, 0.65 ratio, 5 torrents uploaded, 2 weeks account age.<br><br>Elite user class: 100GB upload, 0.65 ratio, 50 torrents uploaded, 4 weeks account age.<br>Torrent Master user class: 500GB upload, 0.65 ratio, 500 torrents uploaded, 8 weeks account age."}},
+{data:{id:"RedLeaves",name:"RedLeaves (红叶)",info:"No additional information."}},
 {data:{id:"RFX",name:"Retroflix",info:"No additional information."}},
 {data:{id:"RTT",name:"RevolutionTT",info:"No additional information."}},
 {data:{id:"SC",name:"Secret Cinema",info:"No additional information."}},
-{data:{id:"SM",name:"SugoiMusic",info:"No additional information."}},
 {data:{id:"SceneHD",name:"SceneHD",info:"No additional information."}},
+{data:{id:"SG",name:"SocietyGlitch",info:"No additional information."}},
+{data:{id:"SJTU",name:"SJTU (葡萄)",info:"No additional information."}},
+{data:{id:"SM",name:"SugoiMusic",info:"No additional information."}},
+{data:{id:"SoulVoice",name:"SoulVoice (聆音Club)",info:"No additional information."}},
 {data:{id:"SpeedApp",name:"SpeedApp",info:"No additional information."}},
+{data:{id:"Tasmanites",name:"Tasmanit.es",info:"No additional information."}},
+{data:{id:"TCCF",name:"TCCF (他吹吹风)",info:"No additional information."}},
 {data:{id:"TG",name:"TheGeeks.click",info:"No additional information."}},
 {data:{id:"THC",name:"TheHorrorCharnel",info:"No additional information."}},
 {data:{id:"THD",name:"TeamHD",info:"No additional information."}},
+{data:{id:"TJUPT",name:"TJUPT (北洋园)",info:"No additional information."}},
 {data:{id:"TLFB",name:"TLFBits",info:"No additional information."}},
 {data:{id:"TS",name:"TorrentSeeds",info:"No additional information."}},
 {data:{id:"TSP",name:"TheScenePlace",info:"No additional information."}},
-{data:{id:"TT",name:"Torrentech",info:"No additional information."}},
-{data:{id:"SG",name:"SocietyGlitch",info:"No additional information."}},
-{data:{id:"U2",name:"U2.dmhy.org",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 4 weeks account age.<br><br>Elite User user class: 120GB download, 1.55 ratio, 8 weeks account age.<br>Crazy User user class: 300GB download, 2.05 ratio, 15 weeks account age.<br>Insane User user class: 500GB download, 2.55 ratio, 25 weeks account age."}},
+{data:{id:"TT",name:"TranceTraffic",info:"No additional information."}},
+{data:{id:"TTech",name:"Torrentech",info:"No additional information."}},
+{data:{id:"U2",name:"U2.dmhy.org (U2分享園@動漫花園)",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 4 weeks account age.<br><br>Elite User user class: 120GB download, 1.55 ratio, 8 weeks account age.<br>Crazy User user class: 300GB download, 2.05 ratio, 15 weeks account age.<br>Insane User user class: 500GB download, 2.55 ratio, 25 weeks account age."}},
 {data:{id:"UHDB",name:"UHDBits",info:"Invite forum unlocks with Extreme User user class: 300GB upload, 2.0 ratio, 6 snatches, 20 seed/leech ratio, 8 weeks account age."}},
-{data:{id:"Xinglin",name:"Xinglin",info:"No additional information."}},
+{data:{id:"Wintersakura",name:"Wintersakura (冬樱)",info:"No additional information."}},
+{data:{id:"Xinglin",name:"Xinglin (杏林)",info:"No additional information."}},
 {data:{source:"AB",target:"ACM",info:"4TB upload. 6 months account age.",days:180}},
 {data:{source:"AB",target:"Aither",info:"3 months account age.",days:90}},
 {data:{source:"AB",target:"ANT",info:"No additional requirements.",days:14}},
@@ -196,9 +243,10 @@
 {data:{source:"AR",target:"UHDB",info:"Satyr or Adonis user class.",days:182}},
 {data:{source:"BHD",target:"Aither",info:"No additional requirements.",days:180}},
 {data:{source:"BHD",target:"ANT",info:"No additional requirements.",days:180}},
-{data:{source:"BHD",target:"CGP",info:"1.0 ratio. 3 months account age.",days:90}},
+{data:{source:"BHD",target:"CGP",info:"1.0 ratio.",days:180}},
+{data:{source:"BHD",target:"CRT",info:"2.5TB upload. 1.0 ratio. 9 months account age.",days:270}},
 {data:{source:"BHD",target:"Hone",info:"No additional requirements.",days:180}},
-{data:{source:"BHD",target:"MTV",info:"1.5 ratio. 6 months account age.",days:182}},
+{data:{source:"BHD",target:"MTV",info:"1.5 ratio.",days:180}},
 {data:{source:"BHD",target:"NBL",info:"No additional requirements.",days:180}},
 {data:{source:"BHD",target:"PxC",info:"No additional requirements.",days:180}},
 {data:{source:"BHD",target:"PxHD",info:"2 other tracker profiles.",days:180}},
@@ -231,6 +279,17 @@
 {data:{source:"CG",target:"SG",info:"No additional requirements.",days:30}},
 {data:{source:"CG",target:"THD",info:"No additional requirements.",days:30}},
 {data:{source:"CG",target:"UHDB",info:"12 months account age.",days:365}},
+{data:{source:"DIC",target:"BTSchool",info:"No additional requirements.",days:14}},
+{data:{source:"DIC",target:"BYRBT",info:"No additional requirements.",days:14}},
+{data:{source:"DIC",target:"GPW",info:"No additional requirements.",days:14}},
+{data:{source:"DIC",target:"HD4FANS",info:"15GB download. 30 torrents snatched. 10 lossless torrents uploaded. 1.2 ratio.",days:14}},
+{data:{source:"DIC",target:"HDArea",info:"10 torrents uploaded. 4 weeks account age.",days:14}},
+{data:{source:"DIC",target:"HDSky",info:"30GB download. 20 torrents uploaded. 1.2 ratio. 3 months account age.",days:14}},
+{data:{source:"DIC",target:"HTPT",info:"No additional requirements.",days:14}},
+{data:{source:"DIC",target:"LeagueHD",info:"No additional requirements.",days:14}},
+{data:{source:"DIC",target:"NPUPT",info:"No additional requirements.",days:14}},
+{data:{source:"DIC",target:"PTer",info:"3 months account age.",days:14}},
+{data:{source:"DIC",target:"U2",info:"5 lossless anime torrents uploaded. 3 weeks account age.",days:14}},
 {data:{source:"Emp",target:"AB",info:"Sextreme Perv user class. 12 months account age.",days:365}},
 {data:{source:"Emp",target:"Aither",info:"No additional requirements.",days:56}},
 {data:{source:"Emp",target:"ANT",info:"No additional requirements.",days:56}},
@@ -240,6 +299,14 @@
 {data:{source:"Emp",target:"PB",info:"6 months account age.",days:182}},
 {data:{source:"Emp",target:"SM",info:"No additional requirements.",days:56}},
 {data:{source:"Emp",target:"UHDB",info:"No additional requirements.",days:56}},
+{data:{source:"FL",target:"BLU",info:"Elite user class.",days:1460}},
+{data:{source:"FL",target:"CG",info:"Other tracker profiles. 5 years account age.",days:1825}},
+{data:{source:"FL",target:"CRT",info:"1.0 ratio. 1 year account age.",days:365}},
+{data:{source:"FL",target:"iAnon",info:"Elite user class.",days:1460}},
+{data:{source:"FL",target:"Milkie",info:"No additional requirements.",days:1}},
+{data:{source:"FL",target:"NBL",info:"No additional requirements.",days:1}},
+{data:{source:"FL",target:"Portugas",info:"No additional requirements.",days:1}},
+{data:{source:"FL",target:"PTer",info:"6 months account age.",days:180}},
 {data:{source:"GGn",target:"AB",info:"Elite Gamer user class. 3 months account age.",days:90}},
 {data:{source:"GGn",target:"ANT",info:"No additional requirements.",days:30}},
 {data:{source:"GGn",target:"CGP",info:"1.0 real ratio. 3 months account age.",days:90}},
@@ -263,12 +330,64 @@
 {data:{source:"GGn",target:"RED",info:"No additional requirements.",days:30}},
 {data:{source:"GGn",target:"SG",info:"90 days account age. Currently at user limit.",days:90}},
 {data:{source:"GGn",target:"UHDB",info:"No additional requirements.",days:30}},
+{data:{source:"GPW",target:"1PTBA",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"3Wmg",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"52PT",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"BeiTai",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"BHDTV",info:"Elite user class. 6 months account age.",days:180}},
+{data:{source:"GPW",target:"BTSchool",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"BYRBT",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"DIC",info:"5 torrents downloaded.",days:14}},
+{data:{source:"GPW",target:"DiscFan",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"DragonHD",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HaiDan",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"Hares",info:"500GB raw download. 50 torrents downloaded. 10 torrents uploaded.",days:14}},
+{data:{source:"GPW",target:"HD4FANS",info:"Elite user class. 800GB raw download. 50 torrents downloaded. 50 torrents uploaded.",days:28}},
+{data:{source:"GPW",target:"HDArea",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HDAtmos",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HDCity",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HDDolby",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HDFans",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HDPOST",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HDSky",info:"Elite user class. 1TB raw download. 12 weeks account age.",days:84}},
+{data:{source:"GPW",target:"HDtime",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HDU",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HITPT",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HTPT",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"HUDBT",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"JoyHD",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"M-T",info:"250GB raw download. 10 torrents uploaded. 1 month account age.",days:30}},
+{data:{source:"GPW",target:"NBL",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"NPUPT",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"NYPT",info:"5 torrents uploaded.",days:14}},
+{data:{source:"GPW",target:"OB",info:"500GB raw download. 50 torrents downloaded. 10 torrents uploaded. 10 weeks account age.",days:70}},
+{data:{source:"GPW",target:"PTer",info:"Elite user class. 6 months account age.",days:180}},
+{data:{source:"GPW",target:"PTHome",info:"Elite user class.",days:28}},
+{data:{source:"GPW",target:"PTMSG",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"RedLeaves",info:"3 months account age.",days:90}},
+{data:{source:"GPW",target:"SoulVoice",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"THD",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"U2",info:"5 anime torrents downloaded. 12 weeks account age.",days:84}},
+{data:{source:"GPW",target:"Wintersakura",info:"No additional requirements.",days:14}},
+{data:{source:"GPW",target:"Xinglin",info:"No additional requirements.",days:14}},
+{data:{source:"M-T",target:"2xFree",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"BeiTai",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"FSM",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"GPW",info:"500GB upload. 4.0 ratio. 1 TV or Movie torrent upload. 12 weeks account age.",days:84}},
+{data:{source:"M-T",target:"Hares",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"HDT",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"HDPOST",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"HDPT",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"HHCLUB",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"HTPT",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"JoyHD",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"LeagueHD",info:"No additional requirements.",days:56}},
+{data:{source:"M-T",target:"THD",info:"No additional requirements.",days:56}},
 {data:{source:"MAM",target:"ABT",info:"No additional requirements.",days:28}},
 {data:{source:"MAM",target:"Aither",info:"No additional requirements.",days:28}},
 {data:{source:"MAM",target:"ANT",info:"No additional requirements.",days:28}},
 {data:{source:"MAM",target:"BdC",info:"2 months account age.",days:60}},
 {data:{source:"MAM",target:"BtW",info:"No additional requirements.",days:28}},
-{data:{source:"MAM",target:"BRKS",info:"1.51 ratio. 1 year account age.",days:365}},
 {data:{source:"MAM",target:"CGP",info:"1TB upload. 6 months account age.",days:180}},
 {data:{source:"MAM",target:"DCC",info:"No additional requirements.",days:28}},
 {data:{source:"MAM",target:"Milkie",info:"No additional requirements.",days:28}},
@@ -303,8 +422,26 @@
 {data:{source:"NBL",target:"PxC",info:"No additional requirements.",days:28}},
 {data:{source:"NBL",target:"RFX",info:"No additional requirements.",days:28}},
 {data:{source:"NBL",target:"SM",info:"No additional requirements.",days:28}},
+{data:{source:"OB",target:"BeiTai",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"GPW",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"HTPT",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"HUDBT",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"HDU",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"JoyHD",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"LeagueHD",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"MDU",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"Milkie",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"PTN",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"SJTU",info:"1.5TB download. 3.5 ratio.",days:70}},
+{data:{source:"OB",target:"TLFB",info:"Crazy User user class, or have 1TB of content ready to cross-seed for 3 months.",days:70}},
+{data:{source:"OB",target:"Tasmanites",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"THD",info:"No additional requirements.",days:70}},
+{data:{source:"OB",target:"UHDB",info:"No additional requirements.",days:70}},
+{data:{source:"OpenCD",target:"BYRBT",info:"No additional requirements.",days:70}},
+{data:{source:"OpenCD",target:"PTer",info:"200GB download. 2.5 ratio. 6 months account age.",days:180}},
+{data:{source:"OpenCD",target:"U2",info:"600GB download. 3.5 ratio. 25 weeks account age.<br>Unofficial invite thread.",days:175}},
 {data:{source:"OPS",target:"ANT",info:"No additional requirements.",days:28}},
-{data:{source:"OPS",target:"BRKS",info:"1.51 ratio. 1 year account age.",days:365}},
+{data:{source:"OPS",target:"BLU",info:"No additional requirements.",days:28}},
 {data:{source:"OPS",target:"CCS",info:"No additional requirements.",days:28}},
 {data:{source:"OPS",target:"GGn",info:"3 months account age.",days:90}},
 {data:{source:"OPS",target:"LzTr",info:"6 months account age.",days:180}},
@@ -314,13 +451,46 @@
 {data:{source:"OPS",target:"RED",info:"3 months account age.",days:90}},
 {data:{source:"OPS",target:"SM",info:"No additional requirements.",days:28}},
 {data:{source:"OPS",target:"UHDB",info:"No additional requirements.",days:28}},
+{data:{source:"PTer",target:"Audiences",info:"Elite User user class.",days:70}},
+{data:{source:"PTer",target:"AZ",info:"500GB upload. 3 months account age.",days:90}},
+{data:{source:"PTer",target:"BHDTV",info:"100GB upload. 1 month account age.",days:30}},
+{data:{source:"PTer",target:"BTSchool",info:"1000GB upload.",days:35}},
+{data:{source:"PTer",target:"CG",info:"Good ratio. 1 year account age.",days:365}},
+{data:{source:"PTer",target:"DIC",info:"Crazy User user class. 10 music uploads, or 15 other uploads.",days:168}},
+{data:{source:"PTer",target:"DiscFan",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"FSM",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"Gainbound",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"Hares",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"HDArea",info:"Elite User user class.",days:70}},
+{data:{source:"PTer",target:"HDCity",info:"1TB upload.",days:35}},
+{data:{source:"PTer",target:"HDDolby",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"HDPOST",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"HHCLUB",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"HD-Only",info:"1TB upload. 1 year account age.",days:365}},
+{data:{source:"PTer",target:"HTPT",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"HITPT",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"KeepFRDS",info:"Insane User user class.",days:224}},
+{data:{source:"PTer",target:"Milkie",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"M-T",info:"Insane User user class.",days:224}},
+{data:{source:"PTer",target:"MTV",info:"1.5 ratio. 6 months account age.",days:180}},
+{data:{source:"PTer",target:"MDU",info:"8 weeks account age.",days:56}},
+{data:{source:"PTer",target:"PTHome",info:"Elite User user class.",days:70}},
+{data:{source:"PTer",target:"PTSbao",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"RedLeaves",info:"500GB upload. 1 audiobook upload.",days:35}},
+{data:{source:"PTer",target:"SpeedApp",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"SJTU",info:"Insane User user class.",days:224}},
+{data:{source:"PTer",target:"SM",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"TCCF",info:"Crazy User user class.",days:168}},
+{data:{source:"PTer",target:"TJUPT",info:"Crazy User user class.",days:168}},
+{data:{source:"PTer",target:"TT",info:"200 music uploads. Elite User user class. 3 months account age.",days:90}},
+{data:{source:"PTer",target:"UHDB",info:"No additional requirements.",days:35}},
+{data:{source:"PTer",target:"Xinglin",info:"No additional requirements.",days:35}},
 {data:{source:"PTP",target:"AB",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"AR",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"BdC",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"BHD",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"BiB",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"BLU",info:"No data yet.",days:30}},
-{data:{source:"PTP",target:"BRKS",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"CCS",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"CH",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"D3",info:"No data yet.",days:30}},
@@ -346,7 +516,7 @@
 {data:{source:"PTP",target:"TG",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"THC",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"TLFB",info:"No data yet.",days:30}},
-{data:{source:"PTP",target:"TT",info:"No data yet.",days:30}},
+{data:{source:"PTP",target:"TTech",info:"No data yet.",days:30}},
 {data:{source:"PTP",target:"UHDB",info:"No data yet.",days:30}},
 {data:{source:"RED",target:"Aither",info:"3 months account age.",days:90}},
 {data:{source:"RED",target:"AB",info:"1 year account age.",days:365}},
@@ -355,7 +525,6 @@
 {data:{source:"RED",target:"BHD",info:"Elite user class. 6 months account age.",days:180}},
 {data:{source:"RED",target:"BLU",info:"3 months account age.",days:90}},
 {data:{source:"RED",target:"BdC",info:"4 months account age.",days:120}},
-{data:{source:"RED",target:"BRKS",info:"Elite user class. 1.51 ratio. 1 year account age.",days:365}},
 {data:{source:"RED",target:"CGP",info:"1.0 ratio. 6 months account age.",days:180}},
 {data:{source:"RED",target:"CCS",info:"No additional requirements.",days:14}},
 {data:{source:"RED",target:"D3",info:"Elite user class. 1.5 ratio. 100 Perfect FLAC torrent uploads. 1 year account age.",days:365}},
@@ -396,7 +565,7 @@
 {data:{source:"U2",target:"Xinglin",info:"No additional requirements.",days:28}},
 {data:{source:"UHDB",target:"ANT",info:"No additional requirements.",days:56}},
 {data:{source:"UHDB",target:"BdC",info:"No additional requirements.",days:56}},
-{data:{source:"UHDB",target:"Bit-HDTV",info:"No additional requirements.",days:56}},
+{data:{source:"UHDB",target:"BHDTV",info:"No additional requirements.",days:56}},
 {data:{source:"UHDB",target:"BLU",info:"No additional requirements.",days:56}},
 {data:{source:"UHDB",target:"FL",info:"No additional requirements.",days:56}},
 {data:{source:"UHDB",target:"HDSky",info:"No additional requirements.",days:56}},
@@ -442,6 +611,11 @@
 		]
 	});
 
+	const layout = {
+		"name": "trackers",
+		fit: true
+	};
+
 	// Options: Abbreviate tracker names
 	const abbrev = document.getElementById("abbrev");
 	const updateAbbrev = () => {
@@ -470,9 +644,11 @@
 
 		if (pathonly.checked)
 			cy.$("[!path]").addClass("hide");
+
+		cy.layout(layout).run();
+		cy.layout(layout).run();
 	};
 
-	updateDeadends();
 	pathonly.addEventListener("change", updateDeadends);
 	nodeadends.addEventListener("change", updateDeadends);
 
@@ -489,10 +665,11 @@
 	TrackerLayout.prototype.avsdf = function(coll) {
 		const md = eles => eles;
 
-		const order = [];
-		const s = [coll.min(e => e.degree()).ele];
+		const conns = coll.map(node => node.incomers().sources().union(node.outgoers().targets()).and(coll));
+		const conn = node => conns[coll.indexOf(node)];
 
-		const conn = node => node.incomers().sources().and(coll).union(node.outgoers().targets().and(coll));
+		const order = [];
+		const s = [coll.min(e => conn(e).length).ele];
 
 		while (s.length > 0) {
 			const v = s.pop();
@@ -511,18 +688,35 @@
 
 	TrackerLayout.prototype.run = function() {
 		const eles = this.options.eles;
-		const nodes = eles.nodes();
+		const nodes = eles.nodes().filter(x => x.visible());
 
 		const clusters = {
+			"chinese": [
+				nodes.$id("DIC"),
+				nodes.$id("GPW"),
+				nodes.$id("OB"),
+				nodes.$id("OpenCD"),
+				nodes.$id("M-T"),
+				nodes.$id("PTer"),
+				nodes.$id("U2"),
+			],
 			"central": []
 		};
 
-		nodes.forEach(node => {
-			if (outNodes(outNodes(node)).length > 0)
-				clusters["central"].push(node);
+		let chi = cy.collection(clusters["chinese"]);
+		nodes.leaves().filter(node => chi.has(inNodes(node))).forEach(node => {
+			clusters["chinese"].push(node);
 		});
 
-		const cc = cy.collection(clusters["central"]);
+		chi = cy.collection(clusters["chinese"]);
+
+		nodes.filter(node => outNodes(outNodes(node)).length > 2 && !chi.has(node)).forEach(node => {
+			clusters["central"].push(node);
+		});
+
+		let cen = cy.collection(clusters["central"]);
+		let cc = cen.union(chi);
+
 		let done = cc;
 		for (const node of cc) {
 			let out = outNodes(node).not(cc);
@@ -562,37 +756,42 @@
 			};
 		};
 
-		circle(cc, {x: 0, y: 0}, 600);
+		const r1 = 35*cen.length;
+		const r2 = 15*chi.length
+		circle(cen, {x: 0, y: 0}, r1);
+		circle(chi, {x: 200+r1+r2, y: 0}, r2);
 
 		for (const key of Object.keys(clusters)) {
-			if (key != "central") {
-				circle(cy.collection(clusters[key]), positions[key], 15 * clusters[key].length, key);
+			if (!Array.isArray(clusters[key])) {
+				circle(clusters[key], positions[key], 15 * clusters[key].length, key);
 			}
 		}
 
 		let left = nodes.not(nodes.leaves()).not(cc);
 		while (left.length > 0) {
-			let node = left[0];
+			let node = nodes.first(x => positions[x.id()] !== undefined);
 
 			out = outNodes(node).not(cc).filter(n => inNodes(n).length === 1).union(node);
-			circle(out, positions[node.id()], 20 * out.length, node.id());
+			if (out.length > 1) {
+				circle(out, positions[node.id()], 20 * out.length, node.id());
+			}
 
 			left = left.not(node);
 		}
 
 		let avg = coll => {
 			let sum = coll.reduce((acc,n) => {
-				let p = positions[n.id()]
+				let p = positions[n.id()];
 				return {
 					x: acc.x + p.x,
 					y: acc.y + p.y
-				}
-			}, { x: 0, y: 0 })
+				};
+			}, { x: 0, y: 0 });
 
 			return {
 				x: sum.x / coll.length,
 				y: sum.y / coll.length
-			}
+			};
 		}
 
 		for (let leaf of nodes.leaves().filter(leaf => !(leaf.id() in positions))) {
@@ -606,15 +805,10 @@
 
 	cytoscape("layout", "trackers", TrackerLayout);
 
-	const layout = {
-		"name": "trackers",
-		fit: true
-	};
-
 	document.getElementById("relayout").addEventListener("click", () => {
 		cy.layout(layout).run();
 	});
-	cy.layout(layout).run();
+	updateDeadends();
 
 	// Additional route info
 	let shownTippy;
