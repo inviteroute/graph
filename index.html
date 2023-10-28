@@ -75,10 +75,10 @@
 		See the <a href="https://github.com/inviteroute/graph" style="color:#f0f">GitHub repository</a> for ways to contribute data.
 	</div>
 
-	<script src="https://unpkg.com/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
-	<script src="https://unpkg.com/@popperjs/core@2"></script>
-	<script src="https://unpkg.com/cytoscape-popper@2.0.0/cytoscape-popper.js"></script>
-	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/cytoscape-popper@2.0.0/cytoscape-popper.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tippy.js@6/dist/tippy.umd.min.js"></script>
 
 	<script type="text/javascript">
 	const cy = cytoscape({
@@ -682,7 +682,8 @@
 	// Layout
 	const nodesFrom = node => node.connectedEdges().targets();
 
-	const inNodes = node => node.incomers().sources();
+	let _inNodes_cache = {};
+	const inNodes = node => _inNodes_cache[node.id()] || (_inNodes_cache[node.id()] = node.incomers().sources());
 	const outNodes = node => node.outgoers().targets();
 
 	function TrackerLayout(options) {
@@ -692,7 +693,7 @@
 	TrackerLayout.prototype.avsdf = function(coll) {
 		const md = eles => eles;
 
-		const conns = coll.map(node => node.incomers().sources().union(node.outgoers().targets()).and(coll));
+		const conns = coll.map(node => inNodes(node).union(outNodes(node)).and(coll));
 		const conn = node => conns[coll.indexOf(node)];
 
 		const order = [];
@@ -726,6 +727,7 @@
 				nodes.$id("M-T"),
 				nodes.$id("PTer"),
 				nodes.$id("U2"),
+				nodes.$id("KamePT"),
 			],
 			"central": []
 		};
