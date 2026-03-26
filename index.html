@@ -25,11 +25,15 @@
 		background: #000;
 	}
 	#options {
+		display: flex;
+		flex-direction: column;
 		position: absolute;
 		top: 0.5em;
 		right: 0.5em;
 	}
 	#pathfind {
+		display: flex;
+		flex-direction: column;
 		position: absolute;
 		top: 0.5em;
 		left: 0.5em;
@@ -42,6 +46,9 @@
 		pointer-events: none;
 		z-index: 99999;
 	}
+	select {
+		float: right;
+	}
 	</style>
 </head>
 <body>
@@ -49,30 +56,36 @@
 		<div id="pathdesc"></div>
 	</div>
 	<div id="options">
-		<input type="checkbox" id="abbrev" checked />
-		<label for="abbrev">Abbreviate tracker names</label>
-
-		<input type="checkbox" id="nodeadends" checked />
-		<label for="nodeadends">Remove dead ends</label>
-
+		<div>
+			<input type="checkbox" id="abbrev" checked />
+			<label for="abbrev">Abbreviate tracker names</label>
+		</div>
+		<div>
+			<input type="checkbox" id="nodeadends" checked />
+			<label for="nodeadends">Remove dead ends</label>
+		</div>
 		<button id="relayout">Refresh layout</button>
 	</div>
 	<div id="pathfind">
 		<div>
-			Source: <select id="source-select"><option value="any">Any</option><option value="all">All</option></select>
-			Target: <select id="target-select"></select>
+			Source&nbsp;<select id="source-select"><option value="any">Any</option><option value="all">All</option></select>
 		</div>
-
-		<input type="checkbox" id="pathonly" />
-		<label for="pathonly">Hide elements not on path</label>
-
-		<input type="checkbox" id="showpathdesc" checked />
-		<label for="showpathdesc">Show path description</label>
+		<div>
+			Target&nbsp;<select id="target-select"></select>
+		</div>
+		<div>
+			<input type="checkbox" id="pathonly" />
+			<label for="pathonly">Hide elements not on path</label>
+		</div>
+		<div>
+			<input type="checkbox" id="showpathdesc" checked />
+			<label for="showpathdesc">Show path description</label>
+		</div>
 	</div>
 	<div style="position:absolute;bottom:0.5em;right:0.5em;text-align:right;">
 		<a href="https://inviteroute.github.io/sheet/" style="color:#f0f">Static sheet view</a><br>
 		Click on circles and arrows to get additional information.<br>
-		See the <a href="https://github.com/inviteroute/graph" style="color:#f0f">GitHub repository</a> for ways to contribute data.
+		<a href="https://github.com/inviteroute/graph/">This site is not maintained anymore, sorry!</a>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
@@ -84,141 +97,141 @@
 	const cy = cytoscape({
 		container: document.getElementById("cy"),
 		elements: [
-{data:{id:"1PTBA",name:"1PTBA",info:"No additional information."}},
-{data:{id:"2xFree",name:"2xFree",info:"No additional information."}},
-{data:{id:"3Wmg",name:"3Wmg (芒果)",info:"No additional information."}},
-{data:{id:"52PT",name:"52PT",info:"No additional information."}},
-{data:{id:"AB",name:"AnimeBytes",info:"Invite forum unlocks with Power User user class: 25GB upload, 0.7 ratio, 10 torrents uploaded, 2 weeks account age.<br><br>Torrent Master user class: 500GB upload, 0.9 ratio, 100 torrents uploaded, 90 days account age.<br>Legend user class: 1TB upload, 1.0 ratio, 500 torrents uploaded, 180 days account age."}},
-{data:{id:"ABT",name:"ABTorrents",info:"No invite forum."}},
-{data:{id:"ACM",name:"AsianCinema",info:"No additional information."}},
-{data:{id:"Aither",name:"Aither",info:"Invite forum unlocks with Prometheus user class: 10TB upload or 10TB seed size, 1.0 ratio, 1 month 2 weeks 1 day average seed time, 5 torrents uploaded, 8 months account age."}},
-{data:{id:"ANT",name:"Anthelion",info:"Invite forum unlocks with Power User user class: 1TB upload, 1.0 ratio, 5 torrents uploaded or 10 torrents adopted, 25000 Orbs.<br><br>Fanatic user class: 2TB upload, 1.5 ratio, 25 torrents uploaded and/or 50 torrents adopted (minimum 5 uploads), 3 months account age, 100000 Orbs."}},
-{data:{id:"AR",name:"AlphaRatio",info:"Invite forum unlocks with Sphinx user class: 3.2TB upload, 1.44 million seed bonus points, no Hit and Runs, 26 weeks account age.<br><br>Satyr user class: 12TB upload, 2.4 million seed bonus points, no Hit and Runs, 60 weeks account age.<br>Adonis user class: 12TB upload, 2.0 million seed bonus points, no Hit and Runs, 60 weeks account age, 50USD or greater donation."}},
-{data:{id:"Audiences",name:"Audiences",info:"No additional information."}},
-{data:{id:"AZ",name:"AvistaZ",info:"No additional information."}},
-{data:{id:"Azusa",name:"Azusa",info:"No additional information."}},
-{data:{id:"BBT",name:"BakaBT",info:"No invite forum."}},
-{data:{id:"BdC",name:"BroadCity",info:"No additional information."}},
-{data:{id:"BeiTai",name:"BeiTai (备胎)",info:"No additional information."}},
-{data:{id:"BHD",name:"BeyondHD",info:"Invite forum unlocks with Pro user class: 1.25TB upload, 0.70 ratio, 30 days seed time, 4 years 11 months total seed time, 60 completed seeds, 500GB special seed size, 6 months account age."}},
-{data:{id:"BHDTV",name:"Bit-HDTV",info:"No additional information."}},
-{data:{id:"BiB",name:"Bibliotik",info:"Invite forum unlocks with Power User user class: either 1GB upload and 100 torrents uploaded, or 10GB upload and 10 torrents uploaded, 1.05 ratio, 2 weeks account age."}},
-{data:{id:"BLU",name:"Blutopia",info:"Invite forum unlocks with BluExtremist or BluSeeder<br>BluExtremist: 20TB upload, 3 months account age.<br>BluSeeder: 5TB seed size, 30 days average seedtime, 1 month account age."}},
-{data:{id:"BTN",name:"BroadcasTheNet",info:"No requirement data yet."}},
-{data:{id:"BTSchool",name:"BTSchool (学校)",info:"No additional information."}},
-{data:{id:"BYRBT",name:"BYRBT (北京邮电大学PT站)",info:"No additional information."}},
-{data:{id:"CAST",name:"Canal Street",info:"No additional information."}},
-{data:{id:"CCC",name:"Cryptichaven Comedy Club",info:"No additional information."}},
-{data:{id:"CCS",name:"Concertos",info:"No invite forum."}},
-{data:{id:"CG",name:"Cinemageddon",info:"Invite forum unlocks with Superfan user class: 200GB upload, 20GB download, 1.5 ratio."}},
-{data:{id:"CGP",name:"CGPeers",info:"No additional information."}},
-{data:{id:"CHD",name:"CrazyHD",info:"No additional information."}},
-{data:{id:"CRT",name:"Cathode-Ray.Tube",info:"No additional information."}},
-{data:{id:"CZ",name:"CinemaZ",info:"No additional information."}},
-{data:{id:"D3",name:"D3Si",info:"No additional information."}},
-{data:{id:"DCC",name:"DigitalCore.Club",info:"No invite forum."}},
-{data:{id:"DIC",name:"Dolphin Is Coming",info:"Invite forum unlocks with Power User user class: 25GB upload, 1.05 ratio, 5 torrents uploaded, 2 weeks account age."}},
-{data:{id:"DiscFan",name:"DiscFan (碟粉)",info:"No additional information."}},
-{data:{id:"DragonHD",name:"DragonHD (龙之家)",info:"No additional information."}},
-{data:{id:"DT",name:"Desitorrents",info:"No additional information."}},
-{data:{id:"Emp",name:"Empornium",info:"Invite forum unlocks with Great Perv user class: 100GB upload, 1.05 ratio, 5 torrents uploaded, 8 weeks account age.<br><br>Sextreme Perv: 1TB upload, 1.05 ratio, 50 torrents uploaded, 13 weeks account age."}},
-{data:{id:"ENT",name:"Enthralled",info:"No additional information."}},
-{data:{id:"FF",name:"FunFile",info:"No additional information."}},
-{data:{id:"FL",name:"Filelist.io",info:"Invite forum unlocks with VIP purchase (monetary or bonus points).<br><br>Elite user class: 4TB upload, 5.0 ratio, 4 years account age."}},
-{data:{id:"FSM",name:"FSM (飞天拉面神教)",info:"No additional information."}},
-{data:{id:"Gainbound",name:"Gainbound (丐帮)",info:"No additional information."}},
-{data:{id:"GGn",name:"GazelleGames.net",info:"Invite forum unlocks with Pro Gamer user class. All user classes are gained with achievement points.<br>Additional invite forum unlocks with Legendary Gamer user class."}},
-{data:{id:"GMgard",name:"Gentlemen's Garden",info:"No additional information."}},
-{data:{id:"GPW",name:"Great Poster Wall",info:"Invite forum unlocks with Power User user class: 200GB raw download, 1.2 ratio, 1 torrent uploaded, 2 weeks account age.<br><br>Elite user class: 500GB raw download, 1.2 ratio, 25 torrents uploaded, 4 weeks account age."}},
-{data:{id:"HaiDan",name:"HaiDan (海胆之家)",info:"No additional information."}},
-{data:{id:"Hares",name:"Hares Club (白兔)",info:"No additional information."}},
-{data:{id:"HD4FANS",name:"HD4FANS",info:"No additional information."}},
-{data:{id:"HDArea",name:"HDArea (好大)",info:"No additional information."}},
-{data:{id:"HDAtmos",name:"HDAtmos (全景声)",info:"No additional information."}},
-{data:{id:"HDB",name:"HDBits",info:"Invite forum unlocks with 1080i user class and 1 year account age. 1080i user class: 30GB download, 0.95 ratio, 4 weeks account age."}},
-{data:{id:"HDChina",name:"HDChina",info:"No additional information."}},
-{data:{id:"HDCity",name:"HDCity (高清城市)",info:"No additional information."}},
-{data:{id:"HDDolby",name:"HD Dolby (高清杜比)",info:"No additional information."}},
-{data:{id:"HDFans",name:"HDFans (红豆饭)",info:"No additional information."}},
-{data:{id:"HD-F",name:"HD-Forever",info:"No invite forum."}},
-{data:{id:"HD-O",name:"HD-Only",info:"No invite forum."}},
-{data:{id:"HDPOST",name:"HDPOST (普斯特)",info:"No additional information."}},
-{data:{id:"HDPT",name:"HDPT (明教)",info:"No additional information."}},
-{data:{id:"HDSky",name:"HDSky",info:"No additional information."}},
-{data:{id:"HDT",name:"HD-Torrents",info:"No invite forum."}},
-{data:{id:"HDtime",name:"HDtime (时间)",info:"No additional information."}},
-{data:{id:"HDU",name:"HDU (好多油)",info:"No additional information."}},
-{data:{id:"HH",name:"HellasHut",info:"No additional information."}},
-{data:{id:"HHCLUB",name:"HHCLUB (晚汉)",info:"No additional information."}},
-{data:{id:"HITPT",name:"HITPT (百川)",info:"No additional information."}},
-{data:{id:"Hone",name:"Hawke-one",info:"No additional information."}},
-{data:{id:"HTPT",name:"HTPT (海棠) ",info:"No additional information."}},
-{data:{id:"HUDBT",name:"HUDBT (华中科技大学蝴蝶PT)",info:"No additional information."}},
-{data:{id:"iAnon",name:"iAnon",info:"No additional information."}},
-{data:{id:"JoyHD",name:"JoyHD (快乐)",info:"No additional information."}},
-{data:{id:"KamePT",name:"KamePT",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 4 weeks account age, 40,000 seed points."}},
-{data:{id:"KeepFRDS",name:"KeepFRDS",info:"No additional information."}},
-{data:{id:"LB",name:"LearnBits",info:"No additional information."}},
-{data:{id:"LeagueHD",name:"LeagueHD",info:"No additional information."}},
-{data:{id:"LST",name:"LST",info:"No additional information."}},
-{data:{id:"LzTr",name:"LzTr",info:"Invite forum unlocks with Power User user class: 25GB upload, 1.05 ratio, 5 torrents uploaded, 2 weeks account age."}},
-{data:{id:"MAM",name:"MyAnonaMouse",info:"Invite forum unlocks with Power User user class: 1TB upload, 2.0 ratio, 6 months account age.<br>Some threads additionally require VIP, purchased with bonus points.<br><br>Open to join through <a href=\"https://www.myanonamouse.net/inviteapp.php\">short interviews</a>."}},
-{data:{id:"MDU",name:"MONIKADESIGN",info:"No additional information."}},
-{data:{id:"Milkie",name:"Milkie",info:"No additional information."}},
-{data:{id:"MiM",name:"Magicis.me",info:"No additional information."}},
-{data:{id:"M-T",name:"M-Team",info:"Invite forum unlocks with Elite User user class: 400GB download, 3.0 ratio, 8 weeks account age."}},
-{data:{id:"MTV",name:"MoreThanTV",info:"Invite forum unlocks with Camera Operator user class: 500GB upload, 8 weeks account age.<br><br>Boom Operator user class: 1000GB upload, 10 checked uploads, 5 forum posts.<br>Engineer user class: 3000GB upload, 500 checked uploads, 25 forum posts, 48 weeks account age."}},
-{data:{id:"NBL",name:"Nebulance",info:"Invite forum unlocks with Ensign user class: 100GB upload, 100 snatches, 100000 Cubits, 4 weeks account age.<br><br>Flattop user class: 250GB upload, 250 snatches, 500000 Cubits, 8 weeks account age."}},
-{data:{id:"NPUPT",name:"NPUPT (蒲公英)",info:"No additional information."}},
-{data:{id:"NYPT",name:"NYPT (西安交通大学南洋PT)",info:"No additional information."}},
-{data:{id:"OB",name:"OurBits",info:"Invite forum unlocks with Elite User user class: 350GB download, 2.5 ratio, 10 weeks account age."}},
-{data:{id:"OBS",name:"Obscure",info:"No additional information."}},
-{data:{id:"OpenCD",name:"Open.CD",info:"Invite forum unlocks with: 60GB download or 20 torrents uploaded, 2.0 ratio, 10 weeks account age."}},
-{data:{id:"OPS",name:"Orpheus",info:"Invite forum unlocks with Elite user class: 100GB upload, 1.05 ratio, 50 torrents uploaded, 4 weeks account age.<br><br>Open to join through <a href=\"https://interview.orpheus.network/\">IRC interviews</a>."}},
-{data:{id:"OTW",name:"OldToons.world",info:"No invite forum."}},
-{data:{id:"PB",name:"Pornbay",info:"Invite forum unlocks with Expert User user class: 100GB upload, 1.05 ratio, 25 torrents uploaded, 8 weeks account age."}},
-{data:{id:"Portugas",name:"Portugas",info:"No additional information."}},
-{data:{id:"PSS",name:"PrivateSilverScreen",info:"No additional information."}},
-{data:{id:"PTer",name:"PTerClub",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 10000 seeding points, 10 torrents uploaded, 5 weeks account age."}},
-{data:{id:"PTF",name:"PTFiles",info:"No additional information."}},
-{data:{id:"PTHome",name:"PTHome (铂金家)",info:"No additional information."}},
-{data:{id:"PTMSG",name:"PTMSG",info:"No additional information."}},
-{data:{id:"PTN",name:"PirateTheNet",info:"No additional information."}},
-{data:{id:"PTP",name:"PassThePopcorn",info:"Invite forum unlocks with Power User user class: 80GB upload, 1.05 ratio, 1 torrent uploaded, 4 weeks account age.<br><br>Elite user class: 500GB upload, 1.05 ratio, 50 torrents uploaded, 10 weeks account age.<br>Torrent Master user class: 1TB upload, 1.05 ratio, 200 torrents uploaded, 16 weeks account age."}},
-{data:{id:"PTSbao",name:"PTSbao (烧包)",info:"No additional information."}},
-{data:{id:"PxC",name:"PixelCove",info:"No invite forum."}},
-{data:{id:"PxHD",name:"PixelHD",info:"No invite forum."}},
-{data:{id:"ReelFliX",name:"ReelFliX",info:"No additional information."}},
-{data:{id:"RED",name:"Redacted",info:"Invite forum unlocks with Power User user class: 25GB upload, 0.65 ratio, 5 torrents uploaded, 2 weeks account age.<br><br>Open to join through <a href=\"https://interviewfor.red/\">IRC interviews</a>.<br><br>Elite user class: 100GB upload, 0.65 ratio, 50 torrents uploaded, 4 weeks account age.<br>Torrent Master user class: 500GB upload, 0.65 ratio, 500 torrents uploaded, 8 weeks account age."}},
-{data:{id:"RedLeaves",name:"RedLeaves (红叶)",info:"No additional information."}},
-{data:{id:"RFX",name:"Retroflix",info:"No additional information."}},
-{data:{id:"RocketHD",name:"RocketHD",info:"No additional information."}},
-{data:{id:"RTT",name:"RevolutionTT",info:"No additional information."}},
-{data:{id:"SC",name:"Secret Cinema",info:"No invite forum."}},
-{data:{id:"SceneHD",name:"SceneHD",info:"No additional information."}},
-{data:{id:"Seedpool",name:"Seedpool",info:"Invite forum unlocks with MegaPool user class: 3.0 ratio, 25TB seed size, 1 year account age."}},
-{data:{id:"Shazbat",name:"Shazbat.tv",info:"No additional information."}},
-{data:{id:"SG",name:"SocietyGlitch",info:"No invite forum."}},
-{data:{id:"SJTU",name:"SJTU (葡萄)",info:"No additional information."}},
-{data:{id:"SM",name:"SugoiMusic",info:"No additional information."}},
-{data:{id:"SoulVoice",name:"SoulVoice (聆音Club)",info:"No additional information."}},
-{data:{id:"SpeedApp",name:"SpeedApp",info:"No additional information."}},
-{data:{id:"Tasmanites",name:"Tasmanit.es",info:"No additional information."}},
-{data:{id:"TCCF",name:"TCCF (他吹吹风)",info:"No additional information."}},
-{data:{id:"TG",name:"TheGeeks.click",info:"No additional information."}},
-{data:{id:"THD",name:"TeamHD",info:"No additional information."}},
-{data:{id:"TJUPT",name:"TJUPT (北洋园)",info:"No additional information."}},
-{data:{id:"TLFB",name:"TLFBits",info:"No additional information."}},
-{data:{id:"TS",name:"TorrentSeeds",info:"No additional information."}},
-{data:{id:"TT",name:"TranceTraffic",info:"No invite forum."}},
-{data:{id:"TTech",name:"Torrentech",info:"No additional information."}},
-{data:{id:"TTG",name:"ToTheGlory",info:"No additional information."}},
-{data:{id:"U2",name:"U2.dmhy.org (U2分享園@動漫花園)",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 4 weeks account age.<br><br>Elite User user class: 120GB download, 1.55 ratio, 8 weeks account age.<br>Crazy User user class: 300GB download, 2.05 ratio, 15 weeks account age.<br>Insane User user class: 500GB download, 2.55 ratio, 25 weeks account age."}},
-{data:{id:"UHDB",name:"UHDBits",info:"Invite forum unlocks with Extreme User user class: 300GB upload, 2.0 ratio, 6 snatches, 20 seed/leech ratio, 8 weeks account age."}},
-{data:{id:"UNW",name:"Unwalled",info:"No invite forum."}},
-{data:{id:"Wintersakura",name:"Wintersakura (冬樱)",info:"No additional information."}},
-{data:{id:"Xinglin",name:"Xinglin (杏林)",info:"No additional information."}},
-{data:{id:"Xspeeds",name:"Xspeeds.eu",info:"No additional information."}},
+{data:{id:"1PTBA",name:"1PTBA",info:"No additional information.",flair:""}},
+{data:{id:"2xFree",name:"2xFree",info:"No additional information.",flair:""}},
+{data:{id:"3Wmg",name:"3Wmg (芒果)",info:"No additional information.",flair:""}},
+{data:{id:"52PT",name:"52PT",info:"No additional information.",flair:""}},
+{data:{id:"AB",name:"AnimeBytes",info:"Invite forum unlocks with Power User user class: 25GB upload, 0.7 ratio, 10 torrents uploaded, 2 weeks account age.<br><br>Torrent Master user class: 500GB upload, 0.9 ratio, 100 torrents uploaded, 90 days account age.<br>Legend user class: 1TB upload, 1.0 ratio, 500 torrents uploaded, 180 days account age.",flair:""}},
+{data:{id:"ABT",name:"ABTorrents",info:"No invite forum.",flair:""}},
+{data:{id:"ACM",name:"AsianCinema",info:"No additional information.",flair:""}},
+{data:{id:"Aither",name:"Aither",info:"Invite forum unlocks with Prometheus user class: 10TB upload or 10TB seed size, 1.0 ratio, 1 month 2 weeks 1 day average seed time, 5 torrents uploaded, 8 months account age.",flair:""}},
+{data:{id:"ANT",name:"Anthelion",info:"Invite forum unlocks with Power User user class: 1TB upload, 1.0 ratio, 5 torrents uploaded or 10 torrents adopted, 25000 Orbs.<br><br>Fanatic user class: 2TB upload, 1.5 ratio, 25 torrents uploaded and/or 50 torrents adopted (minimum 5 uploads), 3 months account age, 100000 Orbs.",flair:""}},
+{data:{id:"AR",name:"AlphaRatio",info:"Invite forum unlocks with Sphinx user class: 3.2TB upload, 1.44 million seed bonus points, no Hit and Runs, 26 weeks account age.<br><br>Satyr user class: 12TB upload, 2.4 million seed bonus points, no Hit and Runs, 60 weeks account age.<br>Adonis user class: 12TB upload, 2.0 million seed bonus points, no Hit and Runs, 60 weeks account age, 50USD or greater donation.",flair:""}},
+{data:{id:"Audiences",name:"Audiences",info:"No additional information.",flair:""}},
+{data:{id:"AZ",name:"AvistaZ",info:"No additional information.",flair:""}},
+{data:{id:"Azusa",name:"Azusa",info:"No additional information.",flair:""}},
+{data:{id:"BBT",name:"BakaBT",info:"No invite forum.",flair:""}},
+{data:{id:"BdC",name:"BroadCity",info:"No additional information.",flair:""}},
+{data:{id:"BeiTai",name:"BeiTai (备胎)",info:"No additional information.",flair:""}},
+{data:{id:"BHD",name:"BeyondHD",info:"Invite forum unlocks with Pro user class: 1.25TB upload, 0.70 ratio, 30 days seed time, 4 years 11 months total seed time, 60 completed seeds, 500GB special seed size, 6 months account age.",flair:""}},
+{data:{id:"BHDTV",name:"Bit-HDTV",info:"No additional information.",flair:""}},
+{data:{id:"BiB",name:"Bibliotik",info:"Invite forum unlocks with Power User user class: either 1GB upload and 100 torrents uploaded, or 10GB upload and 10 torrents uploaded, 1.05 ratio, 2 weeks account age.",flair:""}},
+{data:{id:"BLU",name:"Blutopia",info:"Invite forum unlocks with BluExtremist or BluSeeder<br>BluExtremist: 20TB upload, 3 months account age.<br>BluSeeder: 5TB seed size, 30 days average seedtime, 1 month account age.",flair:""}},
+{data:{id:"BTN",name:"BroadcasTheNet",info:"No requirement data yet.",flair:""}},
+{data:{id:"BTSchool",name:"BTSchool (学校)",info:"No additional information.",flair:""}},
+{data:{id:"BYRBT",name:"BYRBT (北京邮电大学PT站)",info:"No additional information.",flair:""}},
+{data:{id:"CAST",name:"Canal Street",info:"No additional information.",flair:""}},
+{data:{id:"CCC",name:"Cryptichaven Comedy Club",info:"No additional information.",flair:""}},
+{data:{id:"CCS",name:"Concertos",info:"No invite forum.",flair:""}},
+{data:{id:"CG",name:"Cinemageddon",info:"Invite forum unlocks with Superfan user class: 200GB upload, 20GB download, 1.5 ratio.",flair:""}},
+{data:{id:"CGP",name:"CGPeers",info:"No additional information.",flair:""}},
+{data:{id:"CHD",name:"CrazyHD",info:"No additional information.",flair:""}},
+{data:{id:"CRT",name:"Cathode-Ray.Tube",info:"No additional information.",flair:""}},
+{data:{id:"CZ",name:"CinemaZ",info:"No additional information.",flair:""}},
+{data:{id:"D3",name:"D3Si",info:"No additional information.",flair:""}},
+{data:{id:"DCC",name:"DigitalCore.Club",info:"No invite forum.",flair:""}},
+{data:{id:"DIC",name:"Dolphin Is Coming",info:"Invite forum unlocks with Power User user class: 25GB upload, 1.05 ratio, 5 torrents uploaded, 2 weeks account age.",flair:""}},
+{data:{id:"DiscFan",name:"DiscFan (碟粉)",info:"No additional information.",flair:""}},
+{data:{id:"DragonHD",name:"DragonHD (龙之家)",info:"No additional information.",flair:""}},
+{data:{id:"DT",name:"Desitorrents",info:"No additional information.",flair:""}},
+{data:{id:"Emp",name:"Empornium",info:"Invite forum unlocks with Great Perv user class: 100GB upload, 1.05 ratio, 5 torrents uploaded, 8 weeks account age.<br><br>Sextreme Perv: 1TB upload, 1.05 ratio, 50 torrents uploaded, 13 weeks account age.",flair:""}},
+{data:{id:"ENT",name:"Enthralled",info:"No additional information.",flair:""}},
+{data:{id:"FF",name:"FunFile",info:"No additional information.",flair:""}},
+{data:{id:"FL",name:"Filelist.io",info:"Invite forum unlocks with VIP purchase (monetary or bonus points).<br><br>Elite user class: 4TB upload, 5.0 ratio, 4 years account age.",flair:""}},
+{data:{id:"FSM",name:"FSM (飞天拉面神教)",info:"No additional information.",flair:""}},
+{data:{id:"Gainbound",name:"Gainbound (丐帮)",info:"No additional information.",flair:""}},
+{data:{id:"GGn",name:"GazelleGames.net",info:"Invite forum unlocks with Pro Gamer user class. All user classes are gained with achievement points.<br>Additional invite forum unlocks with Legendary Gamer user class.",flair:""}},
+{data:{id:"GMgard",name:"Gentlemen's Garden",info:"No additional information.",flair:""}},
+{data:{id:"GPW",name:"Great Poster Wall",info:"Invite forum unlocks with Power User user class: 200GB raw download, 1.2 ratio, 1 torrent uploaded, 2 weeks account age.<br><br>Elite user class: 500GB raw download, 1.2 ratio, 25 torrents uploaded, 4 weeks account age.",flair:""}},
+{data:{id:"HaiDan",name:"HaiDan (海胆之家)",info:"No additional information.",flair:""}},
+{data:{id:"Hares",name:"Hares Club (白兔)",info:"No additional information.",flair:""}},
+{data:{id:"HD4FANS",name:"HD4FANS",info:"No additional information.",flair:""}},
+{data:{id:"HDArea",name:"HDArea (好大)",info:"No additional information.",flair:""}},
+{data:{id:"HDAtmos",name:"HDAtmos (全景声)",info:"No additional information.",flair:""}},
+{data:{id:"HDB",name:"HDBits",info:"Invite forum unlocks with 1080i user class and 1 year account age. 1080i user class: 30GB download, 0.95 ratio, 4 weeks account age.",flair:""}},
+{data:{id:"HDChina",name:"HDChina",info:"No additional information.",flair:""}},
+{data:{id:"HDCity",name:"HDCity (高清城市)",info:"No additional information.",flair:""}},
+{data:{id:"HDDolby",name:"HD Dolby (高清杜比)",info:"No additional information.",flair:""}},
+{data:{id:"HDFans",name:"HDFans (红豆饭)",info:"No additional information.",flair:""}},
+{data:{id:"HD-F",name:"HD-Forever",info:"No invite forum.",flair:""}},
+{data:{id:"HD-O",name:"HD-Only",info:"No invite forum.",flair:""}},
+{data:{id:"HDPOST",name:"HDPOST (普斯特)",info:"No additional information.",flair:""}},
+{data:{id:"HDPT",name:"HDPT (明教)",info:"No additional information.",flair:""}},
+{data:{id:"HDSky",name:"HDSky",info:"No additional information.",flair:""}},
+{data:{id:"HDT",name:"HD-Torrents",info:"No invite forum.",flair:""}},
+{data:{id:"HDtime",name:"HDtime (时间)",info:"No additional information.",flair:""}},
+{data:{id:"HDU",name:"HDU (好多油)",info:"No additional information.",flair:""}},
+{data:{id:"HH",name:"HellasHut",info:"No additional information.",flair:""}},
+{data:{id:"HHCLUB",name:"HHCLUB (晚汉)",info:"No additional information.",flair:""}},
+{data:{id:"HITPT",name:"HITPT (百川)",info:"No additional information.",flair:""}},
+{data:{id:"Hone",name:"Hawke-one",info:"No additional information.",flair:""}},
+{data:{id:"HTPT",name:"HTPT (海棠) ",info:"No additional information.",flair:""}},
+{data:{id:"HUDBT",name:"HUDBT (华中科技大学蝴蝶PT)",info:"No additional information.",flair:""}},
+{data:{id:"iAnon",name:"iAnon",info:"No additional information.",flair:""}},
+{data:{id:"JoyHD",name:"JoyHD (快乐)",info:"No additional information.",flair:""}},
+{data:{id:"KamePT",name:"KamePT",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 4 weeks account age, 40,000 seed points.",flair:""}},
+{data:{id:"KeepFRDS",name:"KeepFRDS",info:"No additional information.",flair:""}},
+{data:{id:"LB",name:"LearnBits",info:"No additional information.",flair:""}},
+{data:{id:"LeagueHD",name:"LeagueHD",info:"No additional information.",flair:""}},
+{data:{id:"LST",name:"LST",info:"No additional information.",flair:""}},
+{data:{id:"LzTr",name:"LzTr",info:"Invite forum unlocks with Power User user class: 25GB upload, 1.05 ratio, 5 torrents uploaded, 2 weeks account age.",flair:""}},
+{data:{id:"MAM",name:"MyAnonaMouse",info:"Invite forum unlocks with Power User user class: 1TB upload, 2.0 ratio, 6 months account age.<br>Some threads additionally require VIP, purchased with bonus points.<br><br>Open to join through <a href=\"https://www.myanonamouse.net/inviteapp.php\">short interviews</a>.",flair:"open"}},
+{data:{id:"MDU",name:"MONIKADESIGN",info:"No additional information.",flair:""}},
+{data:{id:"Milkie",name:"Milkie",info:"No additional information.",flair:""}},
+{data:{id:"MiM",name:"Magicis.me",info:"No additional information.",flair:""}},
+{data:{id:"M-T",name:"M-Team",info:"Invite forum unlocks with Elite User user class: 400GB download, 3.0 ratio, 8 weeks account age.",flair:""}},
+{data:{id:"MTV",name:"MoreThanTV",info:"Invite forum unlocks with Camera Operator user class: 500GB upload, 8 weeks account age.<br><br>Boom Operator user class: 1000GB upload, 10 checked uploads, 5 forum posts.<br>Engineer user class: 3000GB upload, 500 checked uploads, 25 forum posts, 48 weeks account age.",flair:""}},
+{data:{id:"NBL",name:"Nebulance",info:"Invite forum unlocks with Ensign user class: 100GB upload, 100 snatches, 100000 Cubits, 4 weeks account age.<br><br>Flattop user class: 250GB upload, 250 snatches, 500000 Cubits, 8 weeks account age.",flair:""}},
+{data:{id:"NPUPT",name:"NPUPT (蒲公英)",info:"No additional information.",flair:""}},
+{data:{id:"NYPT",name:"NYPT (西安交通大学南洋PT)",info:"No additional information.",flair:""}},
+{data:{id:"OB",name:"OurBits",info:"Invite forum unlocks with Elite User user class: 350GB download, 2.5 ratio, 10 weeks account age.",flair:""}},
+{data:{id:"OBS",name:"Obscure",info:"No additional information.",flair:""}},
+{data:{id:"OpenCD",name:"Open.CD",info:"Invite forum unlocks with: 60GB download or 20 torrents uploaded, 2.0 ratio, 10 weeks account age.",flair:""}},
+{data:{id:"OPS",name:"Orpheus",info:"Invite forum unlocks with Elite user class: 100GB upload, 1.05 ratio, 50 torrents uploaded, 4 weeks account age.<br><br>Open to join through <a href=\"https://interview.orpheus.network/\">IRC interviews</a>.",flair:"open"}},
+{data:{id:"OTW",name:"OldToons.world",info:"No invite forum.",flair:""}},
+{data:{id:"PB",name:"Pornbay",info:"Invite forum unlocks with Expert User user class: 100GB upload, 1.05 ratio, 25 torrents uploaded, 8 weeks account age.",flair:""}},
+{data:{id:"Portugas",name:"Portugas",info:"No additional information.",flair:""}},
+{data:{id:"PSS",name:"PrivateSilverScreen",info:"No additional information.",flair:""}},
+{data:{id:"PTer",name:"PTerClub",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 10000 seeding points, 10 torrents uploaded, 5 weeks account age.",flair:""}},
+{data:{id:"PTF",name:"PTFiles",info:"No additional information.",flair:""}},
+{data:{id:"PTHome",name:"PTHome (铂金家)",info:"No additional information.",flair:""}},
+{data:{id:"PTMSG",name:"PTMSG",info:"No additional information.",flair:""}},
+{data:{id:"PTN",name:"PirateTheNet",info:"No additional information.",flair:""}},
+{data:{id:"PTP",name:"PassThePopcorn",info:"Invite forum unlocks with Power User user class: 80GB upload, 1.05 ratio, 1 torrent uploaded, 4 weeks account age.<br><br>Elite user class: 500GB upload, 1.05 ratio, 50 torrents uploaded, 10 weeks account age.<br>Torrent Master user class: 1TB upload, 1.05 ratio, 200 torrents uploaded, 16 weeks account age.",flair:""}},
+{data:{id:"PTSbao",name:"PTSbao (烧包)",info:"No additional information.",flair:""}},
+{data:{id:"PxC",name:"PixelCove",info:"No invite forum.",flair:""}},
+{data:{id:"PxHD",name:"PixelHD",info:"No invite forum.",flair:""}},
+{data:{id:"ReelFliX",name:"ReelFliX",info:"No additional information.",flair:""}},
+{data:{id:"RED",name:"Redacted",info:"Invite forum unlocks with Power User user class: 25GB upload, 0.65 ratio, 5 torrents uploaded, 2 weeks account age.<br><br>Open to join through <a href=\"https://interviewfor.red/\">IRC interviews</a>.<br><br>Elite user class: 100GB upload, 0.65 ratio, 50 torrents uploaded, 4 weeks account age.<br>Torrent Master user class: 500GB upload, 0.65 ratio, 500 torrents uploaded, 8 weeks account age.",flair:"open"}},
+{data:{id:"RedLeaves",name:"RedLeaves (红叶)",info:"No additional information.",flair:""}},
+{data:{id:"RFX",name:"Retroflix",info:"No additional information.",flair:""}},
+{data:{id:"RocketHD",name:"RocketHD",info:"No additional information.",flair:""}},
+{data:{id:"RTT",name:"RevolutionTT",info:"No additional information.",flair:""}},
+{data:{id:"SC",name:"Secret Cinema",info:"No invite forum.",flair:""}},
+{data:{id:"SceneHD",name:"SceneHD",info:"No additional information.",flair:""}},
+{data:{id:"Seedpool",name:"Seedpool",info:"Invite forum unlocks with MegaPool user class: 3.0 ratio, 25TB seed size, 1 year account age.",flair:""}},
+{data:{id:"Shazbat",name:"Shazbat.tv",info:"No additional information.",flair:""}},
+{data:{id:"SG",name:"SocietyGlitch",info:"No invite forum.",flair:""}},
+{data:{id:"SJTU",name:"SJTU (葡萄)",info:"No additional information.",flair:""}},
+{data:{id:"SM",name:"SugoiMusic",info:"No additional information.",flair:""}},
+{data:{id:"SoulVoice",name:"SoulVoice (聆音Club)",info:"No additional information.",flair:""}},
+{data:{id:"SpeedApp",name:"SpeedApp",info:"No additional information.",flair:""}},
+{data:{id:"Tasmanites",name:"Tasmanit.es",info:"No additional information.",flair:""}},
+{data:{id:"TCCF",name:"TCCF (他吹吹风)",info:"No additional information.",flair:""}},
+{data:{id:"TG",name:"TheGeeks.click",info:"No additional information.",flair:""}},
+{data:{id:"THD",name:"TeamHD",info:"No additional information.",flair:""}},
+{data:{id:"TJUPT",name:"TJUPT (北洋园)",info:"No additional information.",flair:""}},
+{data:{id:"TLFB",name:"TLFBits",info:"No additional information.",flair:""}},
+{data:{id:"TS",name:"TorrentSeeds",info:"No additional information.",flair:""}},
+{data:{id:"TT",name:"TranceTraffic",info:"No invite forum.",flair:""}},
+{data:{id:"TTech",name:"Torrentech",info:"No additional information.",flair:""}},
+{data:{id:"TTG",name:"ToTheGlory",info:"No additional information.",flair:""}},
+{data:{id:"U2",name:"U2.dmhy.org (U2分享園@動漫花園)",info:"Invite forum unlocks with Power User user class: 50GB download, 1.05 ratio, 4 weeks account age.<br><br>Elite User user class: 120GB download, 1.55 ratio, 8 weeks account age.<br>Crazy User user class: 300GB download, 2.05 ratio, 15 weeks account age.<br>Insane User user class: 500GB download, 2.55 ratio, 25 weeks account age.",flair:""}},
+{data:{id:"UHDB",name:"UHDBits",info:"Invite forum unlocks with Extreme User user class: 300GB upload, 2.0 ratio, 6 snatches, 20 seed/leech ratio, 8 weeks account age.",flair:""}},
+{data:{id:"UNW",name:"Unwalled",info:"No invite forum.",flair:""}},
+{data:{id:"Wintersakura",name:"Wintersakura (冬樱)",info:"No additional information.",flair:""}},
+{data:{id:"Xinglin",name:"Xinglin (杏林)",info:"No additional information.",flair:""}},
+{data:{id:"Xspeeds",name:"Xspeeds.eu",info:"No additional information.",flair:""}},
 {data:{source:"AB",target:"ACM",info:"4TB upload. 6 months account age.",days:180}},
 {data:{source:"AB",target:"Aither",info:"3 months account age.",days:90}},
 {data:{source:"AB",target:"ANT",info:"No additional requirements.",days:14}},
@@ -498,12 +511,12 @@
 {data:{source:"OpenCD",target:"BYRBT",info:"No additional requirements.",days:70}},
 {data:{source:"OpenCD",target:"PTer",info:"200GB download. 2.5 ratio. 6 months account age.",days:180}},
 {data:{source:"OpenCD",target:"U2",info:"600GB download. 3.5 ratio. 25 weeks account age.<br>Unofficial invite thread.",days:175}},
+{data:{source:"OPS",target:"Aither",info:"2 months account age",days:60}},
 {data:{source:"OPS",target:"ANT",info:"No additional requirements.",days:28}},
 {data:{source:"OPS",target:"CCS",info:"No additional requirements.",days:28}},
 {data:{source:"OPS",target:"GGn",info:"3 months account age.",days:90}},
 {data:{source:"OPS",target:"LzTr",info:"6 months account age.",days:180}},
 {data:{source:"OPS",target:"MTV",info:"1.5 ratio. 6 months account age.",days:180}},
-{data:{source:"OPS",target:"NBL",info:"No additional requirements.",days:28}},
 {data:{source:"OPS",target:"OpenCD",info:"No additional requirements.",days:28}},
 {data:{source:"OPS",target:"PTP",info:"Torrent Master user class. 2 years account age.",days:730}},
 {data:{source:"OPS",target:"RED",info:"3 months account age.",days:90}},
@@ -641,6 +654,9 @@
 				"background-color": "#6a6",
 				"label": "data(id)",
 				"color": "#0f0" } }, {
+			selector: "node[flair='open']",
+			style: {
+				"shape": "round-rectangle" } }, {
 			selector: "node.deadend",
 			style: {
 				"background-color": "#a66",
@@ -762,6 +778,7 @@
 				nodes.$id("KamePT"),
 			],
 			"central": [
+				nodes.$id("RED"),
 				nodes.$id("BLU"),
 			]
 		};
@@ -996,16 +1013,16 @@
 		});
 	};
 
-	const setupPathfindSelect = (select) => {
-		cy.nodes().forEach(node => {
+	const setupPathfindSelect = (n, select) => {
+		n.forEach(node => {
 			select.add(new Option(node.id() + ": " + node.data().name, node.id()));
 		});
 
 		select.addEventListener("change", pathfind);
 	};
 
-	setupPathfindSelect(sourceSelect);
-	setupPathfindSelect(targetSelect);
+	setupPathfindSelect(cy.nodes().filter(n => !deadends.has(n)), sourceSelect);
+	setupPathfindSelect(cy.nodes(), targetSelect);
 	sourceSelect.value = "RED";
 	targetSelect.value = "RED";
 	pathfind();
